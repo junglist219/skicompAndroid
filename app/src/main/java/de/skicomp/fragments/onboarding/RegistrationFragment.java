@@ -1,26 +1,19 @@
 package de.skicomp.fragments.onboarding;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.IOException;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import de.hdodenhof.circleimageview.CircleImageView;
 import de.skicomp.R;
 import de.skicomp.SessionManager;
 import de.skicomp.activities.BaseActivity;
@@ -28,7 +21,6 @@ import de.skicomp.activities.onboarding.OnboardingActivity;
 import de.skicomp.data.manager.UserManager;
 import de.skicomp.models.User;
 import de.skicomp.network.SkiService;
-import de.skicomp.utils.ImageUtils;
 import de.skicomp.utils.ProgressDialogManager;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -43,7 +35,6 @@ public class RegistrationFragment extends Fragment {
 
     public static final String TAG = RegistrationFragment.class.getSimpleName();
 
-    @BindView(R.id.civ_profile_picture) CircleImageView civProfilePicture;
     @BindView(R.id.et_username) EditText etUsername;
     @BindView(R.id.et_firstname) EditText etFirstname;
     @BindView(R.id.et_lastname) EditText etLastname;
@@ -71,32 +62,32 @@ public class RegistrationFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick(R.id.civ_profile_picture)
-    public void onClickProfilePicture() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Profilbild auswählen"), OnboardingActivity.RESULT_SELECT_PICTURE);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == Activity.RESULT_OK) {
-            switch(requestCode) {
-                case OnboardingActivity.RESULT_SELECT_PICTURE :
-                    Uri selectedImageUri = data.getData();
-                    try {
-                        profilePicture = ImageUtils.handleSamplingAndRotationBitmap(getContext(), selectedImageUri);
-                        civProfilePicture.setImageBitmap(profilePicture);
-                    } catch (IOException e) {
-                        Log.e(TAG, "IOException", e);
-                    }
-                    break;
-                default :
-                    break;
-            }
-        }
-    }
+//    @OnClick(R.id.civ_profile_picture)
+//    public void onClickProfilePicture() {
+//        Intent intent = new Intent();
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(Intent.createChooser(intent, "Profilbild auswählen"), OnboardingActivity.RESULT_SELECT_PICTURE);
+//    }
+//
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (resultCode == Activity.RESULT_OK) {
+//            switch(requestCode) {
+//                case OnboardingActivity.RESULT_SELECT_PICTURE :
+//                    Uri selectedImageUri = data.getData();
+//                    try {
+//                        profilePicture = ImageUtils.handleSamplingAndRotationBitmap(getContext(), selectedImageUri);
+//                        civProfilePicture.setImageBitmap(profilePicture);
+//                    } catch (IOException e) {
+//                        Log.e(TAG, "IOException", e);
+//                    }
+//                    break;
+//                default :
+//                    break;
+//            }
+//        }
+//    }
 
     @OnClick(R.id.bt_register)
     public void onClickRegister() {

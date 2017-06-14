@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">SkiComp</string>
 
-    <string name="forgot_password"><u>Passwort vergessen</u></string>
+    <string name="onboarding_login_hint_username">USERNAME</string>
+    <string name="onboarding_login_hint_password">PASSWORT</string>
+    <string name="onboarding_login_button">Login</string>
+    <string name="onboarding_forgot_password"><u>Passwort vergessen</u></string>
+    <string name="onboarding_register_button">Noch nicht angemeldet?</string>
+
+    <string name="forgot_password_dialog_text">Du hast dein Passwort vergessen?\nKein Problem!\nGib deinen Nutzername ein und wir senden dir eine E-Mail mit deinem neuen Passwort zu.</string>
+    <string name="forgot_password_dialog_button">PASSWORT ZUSCHICKEN</string>
 
     <string name="skiarea_slopes_easy">%d km - einfach</string>
     <string name="skiarea_slopes_moderate">%d km - mittel</string>

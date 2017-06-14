@@ -6,35 +6,92 @@
         <variable name="handler" type="de.skicomp.fragments.onboarding.OnboardingFragment" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/ll_onboarding_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="50dp">
+        android:orientation="vertical"
+        android:focusableInTouchMode="true"
+        android:weightSum="7">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:background="@drawable/background_gradient"
+            android:layout_weight="3">
+
+            <TextView
+                style="@style/DefaultText.White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="35dp"
+                android:layout_centerInParent="true"
+                android:text="skicomp."
+                android:textSize="@dimen/text_title_app" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/onboarding_margin"
+            android:orientation="vertical"
+            android:layout_weight="4">
+
+            <EditText
+                style="@style/DefaultEditText"
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nextFocusForward="@+id/et_password"
+                android:hint="@string/onboarding_login_hint_username" />
+
+            <EditText
+                style="@style/DefaultEditText"
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_username"
+                android:layout_marginTop="@dimen/default_padding"
+                android:layout_marginBottom="@dimen/default_padding"
+                android:inputType="textPassword"
+                android:hint="@string/onboarding_login_hint_password" />
 
             <Button
+                style="@style/DefaultButton"
                 android:id="@+id/bt_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAllCaps="false"
-                android:text="Login"
+                android:layout_below="@id/et_password"
+                android:layout_marginTop="@dimen/default_padding"
+                android:text="@string/onboarding_login_button"
                 android:onClick="@{handler::onClickLogin}"/>
 
-            <Button
-                android:id="@+id/bt_register"
-                android:layout_width="match_parent"
+            <TextView
+                style="@style/DefaultText"
+                android:id="@+id/tv_onboarding_forgot_password"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAllCaps="false"
-                android:text="Registrieren"
+                android:layout_below="@id/bt_login"
+                android:layout_marginTop="@dimen/default_padding"
+                android:layout_centerHorizontal="true"
+                android:padding="@dimen/default_padding"
+                android:text="@string/onboarding_forgot_password"
+                android:onClick="@{handler::onClickForgotPassword}"/>
+
+            <TextView
+                style="@style/DefaultText.DarkGray"
+                android:id="@+id/tv_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/onboarding_register_button"
+                android:textSize="24sp"
                 android:onClick="@{handler::onClickRegister}"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </layout>
