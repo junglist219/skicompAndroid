@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="user" type="de.skicomp.models.User"/>
+        <variable name="handler" type="de.skicomp.activities.BottomNavigationActivity"/>
+        <variable name="profileHandler" type="de.skicomp.activities.main.AccountActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_gradient">
+
+                <android.support.design.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/civ_profile_picture"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            app:civ_border_color="@color/colorPrimary"
+                            app:civ_border_width="2dp" />
+
+                        <TextView
+                            android:id="@+id/tv_username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            android:text="@{user.username}"
+                            android:textColor="@color/background_white"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_account_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/background_white"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:id="@+id/iv_name"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_account" />
+
+                                <TextView
+                                    android:id="@+id/tv_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@id/iv_name"
+                                    android:text="Name"
+                                    android:textColor="@color/text_color_default"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_firstname"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@id/tv_name"
+                                    android:layout_below="@id/tv_name"
+                                    android:text="@{user.firstname}"
+                                    android:textColor="@color/text_color_title" />
+
+                                <TextView
+                                    android:id="@+id/tv_lastname"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignBottom="@+id/tv_firstname"
+                                    android:layout_toRightOf="@id/tv_firstname"
+                                    android:paddingLeft="5dp"
+                                    android:text="@{user.lastname}"
+                                    android:textColor="@color/text_color_title" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:id="@+id/iv_home"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_home" />
+
+                                <TextView
+                                    android:id="@+id/tv_account_home"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@id/iv_home"
+                                    android:text="Wohnort"
+                                    android:textColor="@color/text_color_default"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_home"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@id/tv_account_home"
+                                    android:layout_below="@id/tv_account_home"
+                                    android:textColor="@color/text_color_title"
+                                    android:text="@{user.city + ',' + user.country}" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:id="@+id/iv_account_email"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_email" />
+
+                                <TextView
+                                    android:id="@+id/tv_account_email"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@id/iv_account_email"
+                                    android:text="E-Mail"
+                                    android:textColor="@color/text_color_default"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_profile"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@id/tv_account_email"
+                                    android:layout_below="@id/tv_account_email"
+                                    android:text="@{user.email}"
+                                    android:textColor="@color/text_color_title" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:id="@+id/iv_profile_location"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_share_position" />
+
+                                <TextView
+                                    android:id="@+id/tv_profile_location"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@id/iv_profile_location"
+                                    android:text="Position senden"
+                                    android:textColor="@color/text_color_title" />
+
+                                <Switch
+                                    android:id="@+id/sw_profile_location_enabled"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_gravity="center"
+                                    android:checked="@{user.trackingEnabled}" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/background_white">
+
+                            <Button
+                                android:id="@+id/bt_update_data"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/bt_background"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:onClick="@{profileHandler::onClickUpdateData}"
+                                android:text="Daten aktualisieren"
+                                android:textAllCaps="false"
+                                android:textColor="@color/text_color_title" />
+
+                            <Button
+                                android:id="@+id/bt_logout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_alignParentRight="true"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/bt_background"
+                                android:onClick="@{profileHandler::onClickLogout}"
+                                android:text="Logout"
+                                android:textAllCaps="false"
+                                android:textColor="@color/text_color_title" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </android.support.design.widget.CoordinatorLayout>
+
+            </ScrollView>
+
+            <FrameLayout
+                android:id="@+id/fl_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
+
+        <include
+            android:id="@+id/navigation"
+            layout="@layout/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            bind:handler="@{handler}"/>
+
+    </LinearLayout>
+
+</layout>

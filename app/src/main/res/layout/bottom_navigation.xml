@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="handler" type="de.skicomp.activities.BottomNavigationActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/background_white"
+        android:weightSum="5">
+
+        <RelativeLayout
+            android:id="@+id/rl_menu_profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="@{handler::onClickMenuItem}">
+
+            <ImageView
+                android:id="@+id/bt_menu_profile_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/padding_bottom_navigation_half"
+                android:paddingBottom="@dimen/padding_bottom_navigation_half"
+                android:src="@drawable/ic_menu_selected_background"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/bt_menu_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/padding_bottom_navigation"
+                android:paddingBottom="@dimen/padding_bottom_navigation"
+                android:src="@drawable/ic_menu_account"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_menu_skiareas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="@{handler::onClickMenuItem}">
+
+            <ImageView
+                android:id="@+id/bt_menu_skiareas_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/padding_bottom_navigation_half"
+                android:paddingBottom="@dimen/padding_bottom_navigation_half"
+                android:src="@drawable/ic_menu_selected_background"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/bt_menu_skiareas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/padding_bottom_navigation"
+                android:paddingBottom="@dimen/padding_bottom_navigation"
+                android:src="@drawable/ic_menu_skiareas"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_menu_map"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="@{handler::onClickMenuItem}">
+
+            <ImageView
+                android:id="@+id/bt_menu_map_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/padding_bottom_navigation_half"
+                android:paddingBottom="@dimen/padding_bottom_navigation_half"
+                android:src="@drawable/ic_menu_selected_background"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/bt_menu_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/padding_bottom_navigation"
+                android:paddingBottom="@dimen/padding_bottom_navigation"
+                android:src="@drawable/ic_menu_map"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_menu_statistics"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="@{handler::onClickMenuItem}">
+
+            <ImageView
+                android:id="@+id/bt_menu_statistics_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/padding_bottom_navigation_half"
+                android:paddingBottom="@dimen/padding_bottom_navigation_half"
+                android:src="@drawable/ic_menu_selected_background"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/bt_menu_statistics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/padding_bottom_navigation"
+                android:paddingBottom="@dimen/padding_bottom_navigation"
+                android:src="@drawable/ic_menu_statistics"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_menu_more"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="@{handler::onClickMenuItem}">
+
+            <ImageView
+                android:id="@+id/bt_menu_more_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/padding_bottom_navigation_half"
+                android:paddingBottom="@dimen/padding_bottom_navigation_half"
+                android:src="@drawable/ic_menu_selected_background"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/bt_menu_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/padding_bottom_navigation"
+                android:paddingBottom="@dimen/padding_bottom_navigation"
+                android:src="@drawable/ic_menu_more"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

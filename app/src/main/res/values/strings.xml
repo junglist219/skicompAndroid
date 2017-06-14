@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SkiComp</string>
+
+    <string name="forgot_password"><u>Passwort vergessen</u></string>
+
+    <string name="skiarea_slopes_easy">%d km - einfach</string>
+    <string name="skiarea_slopes_moderate">%d km - mittel</string>
+    <string name="skiarea_slopes_expert">%d km - schwer</string>
+    <string name="skiarea_slopes_freeride">%d km - freeride</string>
+
+    <string name="heroku_profile_picture_url">https://skiservicetest.herokuapp.com/images/%s.png</string>
+</resources>
