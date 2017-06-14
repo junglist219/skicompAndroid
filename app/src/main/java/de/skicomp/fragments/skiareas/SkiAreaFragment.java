@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.model.LatLng;
@@ -24,7 +25,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import de.skicomp.R;
+import de.skicomp.activities.BaseActivity;
 import de.skicomp.models.SkiArea;
+import de.skicomp.models.weather.WeatherForecast;
+import de.skicomp.network.WeatherService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by benjamin.schneider on 12.05.17.
@@ -86,7 +93,7 @@ public class SkiAreaFragment extends Fragment {
             setToolbar();
             setToolbarBackButton();
             initializeViews();
-            requestWeather();
+//            requestWeather();
         }
     }
 
@@ -142,21 +149,21 @@ public class SkiAreaFragment extends Fragment {
 
         LatLngBounds skiAreaBounds = LatLngBounds.builder().include(northWest).include(southEast).build();
         LatLng skiAreaCenter = skiAreaBounds.getCenter();
-//        WeatherService.getInstance().getForecast(new Callback<WeatherForecast>() {
-//            @Override
-//            public void onResponse(Call<WeatherForecast> call, Response<WeatherForecast> response) {
-//                if (response.isSuccessful()) {
-//                    Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
-//
-//                } else {
-//                    ((BaseActivity) getActivity()).handleError(response);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<WeatherForecast> call, Throwable t) {
-//                Toast.makeText(getContext(), "failure", Toast.LENGTH_SHORT).show();
-//            }
-//        }, skiAreaCenter.latitude, skiAreaCenter.longitude);
+        WeatherService.getInstance().getForecast(new Callback<WeatherForecast>() {
+            @Override
+            public void onResponse(Call<WeatherForecast> call, Response<WeatherForecast> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    ((BaseActivity) getActivity()).handleError(response);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WeatherForecast> call, Throwable t) {
+                Toast.makeText(getContext(), "failure", Toast.LENGTH_SHORT).show();
+            }
+        }, skiAreaCenter.latitude, skiAreaCenter.longitude);
     }
 }
