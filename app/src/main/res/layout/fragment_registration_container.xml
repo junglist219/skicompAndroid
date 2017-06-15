@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Registrierung"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_toolbar_title"
                     android:fontFamily="sans-serif-thin" />
 
             </android.support.v7.widget.Toolbar>
@@ -49,7 +49,7 @@
                 android:layout_alignParentRight="true"
                 android:padding="@dimen/default_padding"
                 android:text="1 / 3"
-                android:textSize="@dimen/text_title_app" />
+                android:textSize="80sp" />
 
         </RelativeLayout>
 
@@ -80,7 +80,7 @@
                 android:layout_marginBottom="@dimen/onboarding_margin"
                 android:layout_marginTop="16dp"
                 android:layout_alignParentBottom="true"
-                android:text="WEITER"
+                android:text="@string/onboarding_register_button_forward"
                 android:onClick="@{handler::onClickForward}"/>
 
         </RelativeLayout>

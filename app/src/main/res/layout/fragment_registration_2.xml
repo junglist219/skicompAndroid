@@ -10,7 +10,7 @@
         android:layout_margin="@dimen/onboarding_margin"
         android:background="@color/white">
 
-        <EditText
+        <de.skicomp.views.SkiEditText
             style="@style/DefaultEditText"
             android:id="@+id/et_firstname"
             android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:nextFocusForward="@+id/et_lastname"
             android:hint="@string/hint_firstname" />
 
-        <EditText
+        <de.skicomp.views.SkiEditText
             style="@style/DefaultEditText"
             android:id="@+id/et_lastname"
             android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:layout_marginTop="@dimen/default_padding"
             android:hint="@string/hint_lastname" />
 
-        <EditText
+        <de.skicomp.views.SkiEditText
             style="@style/DefaultEditText"
             android:id="@+id/et_city"
             android:layout_width="match_parent"
@@ -36,7 +36,7 @@
             android:layout_marginTop="@dimen/default_padding"
             android:hint="@string/hint_city" />
 
-        <EditText
+        <de.skicomp.views.SkiEditText
             style="@style/DefaultEditText"
             android:id="@+id/et_country"
             android:layout_width="match_parent"

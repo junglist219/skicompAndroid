@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,8 @@ public class Registration1Fragment extends Fragment {
     }
 
     public void onClickForward() {
-        if (allFieldsValid()) {
+        resetErrors();
+        if (allFieldsFilled() && allFieldsValid()) {
             final String username = viewBinding.etUsername.getText().toString();
             final String email = viewBinding.etEmail.getText().toString();
             final String password = viewBinding.etPassword.getText().toString();
@@ -64,31 +66,54 @@ public class Registration1Fragment extends Fragment {
         }
     }
 
-    private boolean allFieldsValid() {
+    private void resetErrors() {
+        viewBinding.etUsername.setError(null);
+        viewBinding.etEmail.setError(null);
+        viewBinding.etPassword.setError(null);
+        viewBinding.etConfirmPassword.setError(null);
+    }
+
+    private boolean allFieldsFilled() {
+        boolean allFieldsFilled = true;
+
         if (viewBinding.etUsername.getText().toString().isEmpty()) {
-            Toast.makeText(getContext(), "Username fehlt", Toast.LENGTH_SHORT).show();
-            return false;
+            viewBinding.etUsername.setError();
+            allFieldsFilled = false;
         }
 
         if (viewBinding.etEmail.getText().toString().isEmpty()) {
-            Toast.makeText(getContext(), "E-Mail fehlt", Toast.LENGTH_SHORT).show();
-            return false;
+            viewBinding.etEmail.setError();
+            allFieldsFilled = false;
         }
 
         if (viewBinding.etPassword.getText().toString().isEmpty()) {
-            Toast.makeText(getContext(), "Passwort fehlt", Toast.LENGTH_SHORT).show();
-            return false;
+            viewBinding.etPassword.setError();
+            allFieldsFilled = false;
         }
 
         if (viewBinding.etConfirmPassword.getText().toString().isEmpty()) {
-            Toast.makeText(getContext(), "Passwort fehlt", Toast.LENGTH_SHORT).show();
+            viewBinding.etConfirmPassword.setError();
+            allFieldsFilled = false;
+        }
+
+        return allFieldsFilled;
+    }
+
+    private boolean allFieldsValid() {
+        if (!Patterns.EMAIL_ADDRESS.matcher(viewBinding.etEmail.getText().toString()).matches()) {
+            viewBinding.etEmail.setError();
+            Toast.makeText(getContext(), "E-Mail-Adresse fehlerhaft", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         if (!viewBinding.etPassword.getText().toString().equals(viewBinding.etConfirmPassword.getText().toString())) {
+            viewBinding.etPassword.setError();
+            viewBinding.etConfirmPassword.setError();
             Toast.makeText(getContext(), "Passwörter stimmen nicht überein", Toast.LENGTH_SHORT).show();
             return false;
         }
+
+        // validate password length & characters
 
         return true;
     }

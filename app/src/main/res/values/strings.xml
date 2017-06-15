@@ -17,6 +17,9 @@
     <string name="hint_city">STADT</string>
     <string name="hint_country">LAND</string>
 
+    <string name="onboarding_register_button_forward">WEITER</string>
+    <string name="onboarding_register_button_complete">JETZT REGISTRIEREN</string>
+
     <string name="forgot_password_dialog_text">Du hast dein Passwort vergessen?\nKein Problem!\nGib deinen Nutzername ein und wir senden dir eine E-Mail mit deinem neuen Passwort zu.</string>
     <string name="forgot_password_dialog_button">PASSWORT ZUSCHICKEN</string>
 
@@ -26,4 +29,6 @@
     <string name="skiarea_slopes_freeride">%d km - freeride</string>
 
     <string name="heroku_profile_picture_url">https://skiservicetest.herokuapp.com/images/%s.png</string>
+    <string name="edittext_error_required_field">Pflichtfeld</string>
+    <string name="edittext_error_passwords">Passwörter stimmen nicht überein</string>
 </resources>

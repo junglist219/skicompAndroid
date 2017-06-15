@@ -8,7 +8,6 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -90,17 +89,19 @@ public class OnboardingFragment extends Fragment {
     }
 
     private boolean allFieldsValid() {
+        boolean allFieldsValid = true;
+
         if (username.isEmpty()) {
-            Toast.makeText(getContext(), "Username fehlt", Toast.LENGTH_SHORT).show();
-            return false;
+            viewBinding.etUsername.setError();
+            allFieldsValid = false;
         }
 
         if (password.isEmpty()) {
-            Toast.makeText(getContext(), "Passwort fehlt", Toast.LENGTH_SHORT).show();
-            return false;
+            viewBinding.etPassword.setError();
+            allFieldsValid = false;
         }
 
-        return true;
+        return allFieldsValid;
     }
 
     @Subscribe

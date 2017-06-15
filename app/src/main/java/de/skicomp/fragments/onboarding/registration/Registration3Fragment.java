@@ -2,12 +2,14 @@ package de.skicomp.fragments.onboarding.registration;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import de.skicomp.R;
@@ -26,7 +28,7 @@ public class Registration3Fragment extends Fragment {
     private Registration3Fragment.Registration3CompletedListener listener;
 
     public interface Registration3CompletedListener {
-        void onCompletedRegistrationStep3();
+        void onCompletedRegistrationStep3(Bitmap bitmap);
     }
 
     @Nullable
@@ -47,6 +49,7 @@ public class Registration3Fragment extends Fragment {
     public void onResume() {
         super.onResume();
         ((TextView) getParentFragment().getView().findViewById(R.id.tv_registration_toolbar_subtitle)).setText("3 / 3");
+        ((Button) getParentFragment().getView().findViewById(R.id.bt_forward)).setText(R.string.onboarding_register_button_complete);
     }
 
     public void setListener(Registration3Fragment.Registration3CompletedListener listener) {
@@ -54,6 +57,6 @@ public class Registration3Fragment extends Fragment {
     }
 
     public void onClickForward() {
-
+        listener.onCompletedRegistrationStep3(null);
     }
 }

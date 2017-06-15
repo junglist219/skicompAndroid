@@ -1,6 +1,7 @@
 package de.skicomp.fragments.onboarding.registration;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,10 @@ import android.view.ViewGroup;
 import de.skicomp.R;
 import de.skicomp.databinding.FragmentRegistrationContainerBinding;
 import de.skicomp.models.User;
+import de.skicomp.network.SkiService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by benjamin.schneider on 15.06.17.
@@ -98,8 +103,20 @@ public class RegistrationContainerFragment extends Fragment implements Registrat
     }
 
     @Override
-    public void onCompletedRegistrationStep3() {
-        // save image & send registration
+    public void onCompletedRegistrationStep3(Bitmap bitmap) {
+        SkiService.getInstance().register(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful()) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        }, user);
     }
 
     public boolean onBackPressed() {
@@ -114,6 +131,7 @@ public class RegistrationContainerFragment extends Fragment implements Registrat
                     Registration2Fragment registration2Fragment = (Registration2Fragment) getChildFragmentManager().findFragmentByTag(Registration2Fragment.TAG);
                     registration2Fragment.setListener(this);
                     viewBinding.tvRegistrationToolbarSubtitle.setText("2 / 3");
+                    viewBinding.btForward.setText(R.string.onboarding_register_button_forward);
                     break;
             }
             currentRegistrationStep--;
