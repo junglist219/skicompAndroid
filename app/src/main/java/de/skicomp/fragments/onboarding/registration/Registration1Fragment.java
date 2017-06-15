@@ -59,7 +59,6 @@ public class Registration1Fragment extends Fragment {
     }
 
     public void onClickForward() {
-        resetErrors();
         if (allFieldsFilled() && allFieldsValid()) {
             final String username = viewBinding.etUsername.getText().toString();
             final String email = viewBinding.etEmail.getText().toString();
@@ -67,13 +66,6 @@ public class Registration1Fragment extends Fragment {
 
             listener.onCompletedRegistrationStep1(username, email, password);
         }
-    }
-
-    private void resetErrors() {
-        viewBinding.etUsername.setError(null);
-        viewBinding.etEmail.setError(null);
-        viewBinding.etPassword.setError(null);
-        viewBinding.etConfirmPassword.setError(null);
     }
 
     private boolean allFieldsFilled() {
@@ -123,7 +115,7 @@ public class Registration1Fragment extends Fragment {
             return false;
         }
 
-        Pattern passwordPattern = Pattern.compile("[a-zA-Z0-9]");
+        Pattern passwordPattern = Pattern.compile("[a-zA-Z0-9]{3,32}");
         if (!passwordPattern.matcher(viewBinding.etPassword.getText().toString()).matches()) {
             viewBinding.etPassword.setError();
             viewBinding.etConfirmPassword.setError();

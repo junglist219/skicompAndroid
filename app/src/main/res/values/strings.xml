@@ -21,6 +21,8 @@
     <string name="error_email_not_valid">E-Mail fehlerhaft</string>
     <string name="error_passwords_not_matching">Passwörter stimmen nicht überein</string>
     <string name="error_password_not_valid">Passwort muss aus mindestens einem Klein-, einem Großbuchstaben und einem Zeichen bestehen</string>
+    <string name="error_firstname_not_valid">Vorname enthält ungültige Zeichen</string>
+    <string name="error_lastname_not_valid">Nachname enthält ungültige Zeichen</string>
 
     <string name="onboarding_register_button_forward">WEITER</string>
     <string name="onboarding_register_button_complete">JETZT REGISTRIEREN</string>

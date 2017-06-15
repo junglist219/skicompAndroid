@@ -11,8 +11,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.regex.Pattern;
+
 import de.skicomp.R;
 import de.skicomp.databinding.FragmentRegistration2Binding;
+import de.skicomp.utils.Utils;
 
 /**
  * Created by benjamin.schneider on 15.06.17.
@@ -55,7 +58,7 @@ public class Registration2Fragment extends Fragment {
     }
 
     public void onClickForward() {
-        if (allFieldsValid()) {
+        if (allFieldsFilled() && allFieldsValid()) {
             final String firstname = viewBinding.etFirstname.getText().toString();
             final String lastname = viewBinding.etLastname.getText().toString();
             final String city = viewBinding.etCity.getText().toString();
@@ -65,14 +68,34 @@ public class Registration2Fragment extends Fragment {
         }
     }
 
-    private boolean allFieldsValid() {
+    private boolean allFieldsFilled() {
+        boolean allFieldsFilled = true;
+
         if (viewBinding.etFirstname.getText().toString().isEmpty()) {
-            Toast.makeText(getContext(), "Vorname fehlt", Toast.LENGTH_SHORT).show();
-            return false;
+            viewBinding.etFirstname.setError();
+            allFieldsFilled = false;
         }
 
         if (viewBinding.etLastname.getText().toString().isEmpty()) {
-            Toast.makeText(getContext(), "Nachname fehlt", Toast.LENGTH_SHORT).show();
+            viewBinding.etLastname.setError();
+            allFieldsFilled = false;
+        }
+
+        return allFieldsFilled;
+    }
+
+    private boolean allFieldsValid() {
+        Pattern namePattern = Pattern.compile("^[a-zA-Z]*$");
+
+        if (!namePattern.matcher(viewBinding.etFirstname.getText().toString()).matches()) {
+            viewBinding.etFirstname.setError();
+            Utils.showToast(getContext(), R.string.error_firstname_not_valid, Toast.LENGTH_SHORT);
+            return false;
+        }
+
+        if (!namePattern.matcher(viewBinding.etLastname.getText().toString()).matches()) {
+            viewBinding.etLastname.setError();
+            Utils.showToast(getContext(), R.string.error_lastname_not_valid, Toast.LENGTH_SHORT);
             return false;
         }
 
