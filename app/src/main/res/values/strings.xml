@@ -1,11 +1,21 @@
 <resources>
     <string name="app_name">SkiComp</string>
 
-    <string name="onboarding_login_hint_username">USERNAME</string>
-    <string name="onboarding_login_hint_password">PASSWORT</string>
     <string name="onboarding_login_button">Login</string>
     <string name="onboarding_forgot_password"><u>Passwort vergessen</u></string>
     <string name="onboarding_register_button">Noch nicht angemeldet?</string>
+
+    <string name="hint_login_username">USERNAME</string>
+    <string name="hint_login_password">PASSWORT</string>
+
+    <string name="hint_username">USERNAME *</string>
+    <string name="hint_email">E-MAIL *</string>
+    <string name="hint_password">PASSWORT *</string>
+    <string name="hint_confirm_password">PASSWORT WIEDERHOLEN *</string>
+    <string name="hint_firstname">VORNAME *</string>
+    <string name="hint_lastname">NACHNAME *</string>
+    <string name="hint_city">STADT</string>
+    <string name="hint_country">LAND</string>
 
     <string name="forgot_password_dialog_text">Du hast dein Passwort vergessen?\nKein Problem!\nGib deinen Nutzername ein und wir senden dir eine E-Mail mit deinem neuen Passwort zu.</string>
     <string name="forgot_password_dialog_button">PASSWORT ZUSCHICKEN</string>

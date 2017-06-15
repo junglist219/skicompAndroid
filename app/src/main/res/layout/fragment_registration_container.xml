@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="handler" type="de.skicomp.fragments.onboarding.registration.RegistrationContainerFragment" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_onboarding_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:focusableInTouchMode="true"
+        android:weightSum="8">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/background_gradient"
+            android:layout_weight="3">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <TextView
+                    style="@style/DefaultText.White"
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registrierung"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-thin" />
+
+            </android.support.v7.widget.Toolbar>
+
+            <TextView
+                style="@style/DefaultText.White"
+                android:id="@+id/tv_registration_toolbar_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/default_padding"
+                android:text="1 / 3"
+                android:textSize="@dimen/text_title_app" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bt_forward">
+
+                <FrameLayout
+                    android:id="@+id/fl_container_registration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </ScrollView>
+
+            <Button
+                style="@style/DefaultButton"
+                android:id="@+id/bt_forward"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/onboarding_margin"
+                android:layout_marginRight="@dimen/onboarding_margin"
+                android:layout_marginBottom="@dimen/onboarding_margin"
+                android:layout_marginTop="16dp"
+                android:layout_alignParentBottom="true"
+                android:text="WEITER"
+                android:onClick="@{handler::onClickForward}"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

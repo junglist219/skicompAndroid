@@ -23,6 +23,7 @@ import de.skicomp.dialogs.ForgotPasswordDialog;
 import de.skicomp.events.user.UserEvent;
 import de.skicomp.events.user.UserEventFailure;
 import de.skicomp.events.user.UserEventSuccess;
+import de.skicomp.fragments.onboarding.registration.RegistrationContainerFragment;
 import de.skicomp.utils.ProgressDialogManager;
 import retrofit2.Response;
 
@@ -82,8 +83,9 @@ public class OnboardingFragment extends Fragment {
     @SuppressWarnings("unused")
     public void onClickRegister(View view) {
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fl_container, new RegistrationFragment())
-                .addToBackStack(RegistrationFragment.TAG)
+                .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left, R.anim.slide_from_left, R.anim.slide_to_right)
+                .replace(R.id.fl_container, new RegistrationContainerFragment())
+                .addToBackStack(RegistrationContainerFragment.TAG)
                 .commit();
     }
 

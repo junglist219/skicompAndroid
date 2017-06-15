@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:focusableInTouchMode="true"
-        android:weightSum="7">
+        android:weightSum="8">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -31,66 +31,73 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/onboarding_margin"
-            android:orientation="vertical"
-            android:layout_weight="4">
+            android:layout_weight="5">
 
-            <EditText
-                style="@style/DefaultEditText"
-                android:id="@+id/et_username"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nextFocusForward="@+id/et_password"
-                android:hint="@string/onboarding_login_hint_username" />
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/onboarding_margin">
 
-            <EditText
-                style="@style/DefaultEditText"
-                android:id="@+id/et_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/et_username"
-                android:layout_marginTop="@dimen/default_padding"
-                android:layout_marginBottom="@dimen/default_padding"
-                android:inputType="textPassword"
-                android:hint="@string/onboarding_login_hint_password" />
+                <EditText
+                    style="@style/DefaultEditText"
+                    android:id="@+id/et_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nextFocusForward="@+id/et_password"
+                    android:hint="@string/hint_username" />
 
-            <Button
-                style="@style/DefaultButton"
-                android:id="@+id/bt_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/et_password"
-                android:layout_marginTop="@dimen/default_padding"
-                android:text="@string/onboarding_login_button"
-                android:onClick="@{handler::onClickLogin}"/>
+                <EditText
+                    style="@style/DefaultEditText"
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/et_username"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    android:inputType="textPassword"
+                    android:hint="@string/hint_password" />
 
-            <TextView
-                style="@style/DefaultText.DarkGray"
-                android:id="@+id/tv_onboarding_forgot_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/bt_login"
-                android:layout_marginTop="@dimen/default_padding"
-                android:layout_centerHorizontal="true"
-                android:padding="@dimen/default_padding"
-                android:text="@string/onboarding_forgot_password"
-                android:onClick="@{handler::onClickForgotPassword}"/>
+                <Button
+                    style="@style/DefaultButton"
+                    android:id="@+id/bt_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/et_password"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:text="@string/onboarding_login_button"
+                    android:onClick="@{handler::onClickLogin}"/>
 
-            <TextView
-                style="@style/DefaultText.DarkGray"
-                android:id="@+id/tv_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="@string/onboarding_register_button"
-                android:textSize="24sp"
-                android:onClick="@{handler::onClickRegister}"/>
+                <TextView
+                    style="@style/DefaultText.DarkGray"
+                    android:id="@+id/tv_onboarding_forgot_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bt_login"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:layout_centerHorizontal="true"
+                    android:padding="@dimen/default_padding"
+                    android:text="@string/onboarding_forgot_password"
+                    android:onClick="@{handler::onClickForgotPassword}"/>
 
-        </RelativeLayout>
+                <TextView
+                    style="@style/DefaultText.DarkGray"
+                    android:id="@+id/tv_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@id/tv_onboarding_forgot_password"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/onboarding_register_button"
+                    android:textSize="24sp"
+                    android:onClick="@{handler::onClickRegister}"/>
+
+            </RelativeLayout>
+
+        </ScrollView>
 
     </LinearLayout>
 

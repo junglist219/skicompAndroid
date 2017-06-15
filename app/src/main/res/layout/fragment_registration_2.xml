@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/onboarding_margin"
+        android:background="@color/white">
+
+        <EditText
+            style="@style/DefaultEditText"
+            android:id="@+id/et_firstname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nextFocusForward="@+id/et_lastname"
+            android:hint="@string/hint_firstname" />
+
+        <EditText
+            style="@style/DefaultEditText"
+            android:id="@+id/et_lastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_city"
+            android:layout_marginTop="@dimen/default_padding"
+            android:hint="@string/hint_lastname" />
+
+        <EditText
+            style="@style/DefaultEditText"
+            android:id="@+id/et_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_username"
+            android:layout_marginTop="@dimen/default_padding"
+            android:hint="@string/hint_city" />
+
+        <EditText
+            style="@style/DefaultEditText"
+            android:id="@+id/et_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_username"
+            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginBottom="@dimen/default_padding"
+            android:hint="@string/hint_country" />
+
+    </LinearLayout>
+
+</layout>
