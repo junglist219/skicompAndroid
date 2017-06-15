@@ -68,7 +68,7 @@
                 android:onClick="@{handler::onClickLogin}"/>
 
             <TextView
-                style="@style/DefaultText"
+                style="@style/DefaultText.DarkGray"
                 android:id="@+id/tv_onboarding_forgot_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

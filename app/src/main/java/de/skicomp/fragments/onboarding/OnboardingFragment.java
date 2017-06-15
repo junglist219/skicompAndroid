@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +60,6 @@ public class OnboardingFragment extends Fragment {
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
-        viewBinding.llOnboardingContainer.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.transparent_25));
     }
 
     @SuppressWarnings("unused")
@@ -78,12 +76,7 @@ public class OnboardingFragment extends Fragment {
     @SuppressWarnings("unused")
     public void onClickForgotPassword(View view) {
         ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog();
-
-        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.slide_from_bottom, R.anim.slide_to_bottom, R.anim.slide_to_bottom, R.anim.slide_to_bottom);
-        fragmentTransaction.add(R.id.fl_container, forgotPasswordDialog, ForgotPasswordDialog.TAG);
-        fragmentTransaction.addToBackStack(ForgotPasswordDialog.TAG);
-        fragmentTransaction.commit();
+        forgotPasswordDialog.show(getActivity().getSupportFragmentManager(), ForgotPasswordDialog.TAG);
     }
 
     @SuppressWarnings("unused")

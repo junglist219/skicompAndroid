@@ -1,9 +1,10 @@
 package de.skicomp.dialogs;
 
+import android.app.Dialog;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +23,19 @@ import retrofit2.Response;
  * Created by benjamin.schneider on 11.05.17.
  */
 
-public class ForgotPasswordDialog extends DialogFragment {
+public class ForgotPasswordDialog extends BaseDialogFragment {
 
     public static final String TAG = ForgotPasswordDialog.class.getSimpleName();
 
     private DialogForgotPasswordBinding viewBinding;
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        final Dialog dialog = super.onCreateDialog(savedInstanceState);
+        dialog.getWindow().getAttributes().windowAnimations = R.style.dialog_animation_slide;
+        return dialog;
+    }
 
     @Nullable
     @Override
@@ -34,15 +43,12 @@ public class ForgotPasswordDialog extends DialogFragment {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.dialog_forgot_password, container, false);
         viewBinding.setHandler(this);
 
-        setStyle(STYLE_NORMAL, R.style.FullscreenDialog);
-        setCancelable(false);
-
         return viewBinding.getRoot();
     }
 
     @SuppressWarnings("unused")
     public void onClickClose(View view) {
-        getActivity().onBackPressed();
+        dismiss();
     }
 
     @SuppressWarnings("unused")
