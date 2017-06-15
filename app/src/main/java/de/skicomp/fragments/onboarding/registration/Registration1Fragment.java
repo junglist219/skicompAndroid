@@ -12,8 +12,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.regex.Pattern;
+
 import de.skicomp.R;
 import de.skicomp.databinding.FragmentRegistration1Binding;
+import de.skicomp.utils.Utils;
 
 /**
  * Created by benjamin.schneider on 15.06.17.
@@ -100,20 +103,33 @@ public class Registration1Fragment extends Fragment {
     }
 
     private boolean allFieldsValid() {
+        Pattern usernamePattern = Pattern.compile("^[a-zA-Z0-9]*$");
+        if (!usernamePattern.matcher(viewBinding.etUsername.getText().toString()).matches()) {
+            viewBinding.etUsername.setError();
+            Utils.showToast(getContext(), R.string.error_username, Toast.LENGTH_SHORT);
+            return false;
+        }
+
         if (!Patterns.EMAIL_ADDRESS.matcher(viewBinding.etEmail.getText().toString()).matches()) {
             viewBinding.etEmail.setError();
-            Toast.makeText(getContext(), "E-Mail-Adresse fehlerhaft", Toast.LENGTH_SHORT).show();
+            Utils.showToast(getContext(), R.string.error_email_not_valid, Toast.LENGTH_SHORT);
             return false;
         }
 
         if (!viewBinding.etPassword.getText().toString().equals(viewBinding.etConfirmPassword.getText().toString())) {
             viewBinding.etPassword.setError();
             viewBinding.etConfirmPassword.setError();
-            Toast.makeText(getContext(), "Passwörter stimmen nicht überein", Toast.LENGTH_SHORT).show();
+            Utils.showToast(getContext(), R.string.error_passwords_not_matching, Toast.LENGTH_SHORT);
             return false;
         }
 
-        // validate password length & characters
+        Pattern passwordPattern = Pattern.compile("[a-zA-Z0-9]");
+        if (!passwordPattern.matcher(viewBinding.etPassword.getText().toString()).matches()) {
+            viewBinding.etPassword.setError();
+            viewBinding.etConfirmPassword.setError();
+            Utils.showToast(getContext(), R.string.error_password_not_valid, Toast.LENGTH_LONG);
+            return false;
+        }
 
         return true;
     }

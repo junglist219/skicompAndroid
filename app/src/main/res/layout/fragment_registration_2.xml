@@ -23,8 +23,8 @@
             android:id="@+id/et_lastname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/et_city"
             android:layout_marginTop="@dimen/default_padding"
+            android:nextFocusForward="@+id/et_city"
             android:hint="@string/hint_lastname" />
 
         <de.skicomp.views.SkiEditText
@@ -32,8 +32,8 @@
             android:id="@+id/et_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/et_username"
             android:layout_marginTop="@dimen/default_padding"
+            android:nextFocusForward="@+id/et_country"
             android:hint="@string/hint_city" />
 
         <de.skicomp.views.SkiEditText
@@ -41,9 +41,7 @@
             android:id="@+id/et_country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/et_username"
             android:layout_marginTop="@dimen/default_padding"
-            android:layout_marginBottom="@dimen/default_padding"
             android:hint="@string/hint_country" />
 
     </LinearLayout>

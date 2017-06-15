@@ -22,8 +22,8 @@
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/et_username"
             android:layout_marginTop="@dimen/default_padding"
+            android:nextFocusForward="@+id/et_password"
             android:hint="@string/hint_email" />
 
         <de.skicomp.views.SkiEditText
@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/et_username"
+            android:nextFocusForward="@+id/et_confirm_password"
             android:layout_marginTop="@dimen/default_padding"
             android:inputType="textPassword"
             android:hint="@string/hint_password" />
@@ -41,9 +42,7 @@
             android:id="@+id/et_confirm_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/et_username"
             android:layout_marginTop="@dimen/default_padding"
-            android:layout_marginBottom="@dimen/default_padding"
             android:inputType="textPassword"
             android:hint="@string/hint_confirm_password" />
 
