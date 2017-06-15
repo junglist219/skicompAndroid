@@ -13,3 +13,6 @@ n
 >app/src/main/java/de/skicomp/dialogs/ForgotPasswordDialog.java,7/8/78081a3f9e50636bbe1af2d32fd7946f3ea9c87f
 >
 app/.gitignore,5/1/51e1c5d383dfaa35e0e7e5873a0a99355a86880f
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
