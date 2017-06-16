@@ -13,6 +13,9 @@ import java.io.Serializable;
 public class SkiArea implements Serializable {
 
     @DatabaseField(id = true)
+    @SerializedName("id")
+    private int id;
+
     @SerializedName("name")
     private String name;
 

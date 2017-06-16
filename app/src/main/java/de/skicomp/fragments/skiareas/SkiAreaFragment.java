@@ -1,31 +1,24 @@
 package de.skicomp.fragments.skiareas;
 
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
+import android.databinding.DataBindingUtil;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import de.skicomp.R;
 import de.skicomp.activities.BaseActivity;
+import de.skicomp.databinding.FragmentSkiareaBinding;
 import de.skicomp.models.SkiArea;
 import de.skicomp.models.weather.WeatherForecast;
 import de.skicomp.network.WeatherService;
@@ -43,43 +36,15 @@ public class SkiAreaFragment extends Fragment {
 
     public static final String KEY_SKIAREA = "keySkiArea";
 
-    @BindView(R.id.collapsing_toolbar) CollapsingToolbarLayout collapsingToolbar;
-    @BindView(R.id.expanded_toolbar_image) ImageView ivExpandedToolbarImage;
-    @BindView(R.id.toolbar) Toolbar toolbar;
-
-    @BindView(R.id.iv_skiarea_logo) ImageView ivSkiAreaLogo;
-
-    @BindView(R.id.tv_skiarea_country) TextView tvSkiAreaCountry;
-    @BindView(R.id.tv_skiarea_state) TextView tvSkiAreaState;
-    @BindView(R.id.tv_skiarea_description) TextView tvSkiAreaDescription;
-
-    @BindView(R.id.tv_skiarea_min_height) TextView tvSkiAreaMinHeight;
-    @BindView(R.id.tv_skiarea_max_height) TextView tvSkiAreaMaxHeight;
-
-    @BindView(R.id.tv_skiarea_slopes_easy) TextView tvSkiAreaEasy;
-    @BindView(R.id.tv_skiarea_slopes_moderate) TextView tvSkiAreaModerate;
-    @BindView(R.id.tv_skiarea_slopes_expert) TextView tvSkiAreaExpert;
-    @BindView(R.id.tv_skiarea_slopes_freeride) TextView tvSkiAreaFreeride;
-
-    @BindView(R.id.tv_skiarea_drag_lifts) TextView tvSkiAreaDragLifts;
-    @BindView(R.id.tv_skiarea_chair_lifts) TextView tvSkiAreaChairLifts;
-    @BindView(R.id.tv_skiarea_gondola_lifts) TextView tvSkiAreaGondolaLifts;
-    @BindView(R.id.tv_skiarea_aerial_tramways) TextView tvSkiAreaAerialTramways;
-    @BindView(R.id.tv_skiarea_railways) TextView tvSkiAreaRailways;
-
-    @BindView(R.id.bt_skiarea_weather) Button btSkiAreaWeather;
-
-    private Unbinder unbinder;
-
     private SkiArea skiArea;
+    private FragmentSkiareaBinding viewBinding;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View inflatedView = inflater.inflate(R.layout.fragment_skiarea, container, false);
-        unbinder = ButterKnife.bind(this, inflatedView);
+        viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_skiarea, container, false);
 
-        return inflatedView;
+        return viewBinding.getRoot();
     }
 
     @Override
@@ -97,50 +62,39 @@ public class SkiAreaFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
-
     private void setToolbar() {
-        collapsingToolbar.setCollapsedTitleTextColor(ContextCompat.getColor(getContext(), android.R.color.white));
-        collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(getContext(), android.R.color.white));
-        collapsingToolbar.setTitle(skiArea.getName());
-
-        Glide.with(getContext())
-                .load(skiArea.getImageUrlOverview())
-                .into(ivExpandedToolbarImage);
+        viewBinding.collapsingToolbar.setCollapsedTitleTextColor(ContextCompat.getColor(getContext(), android.R.color.white));
+        viewBinding.collapsingToolbar.setCollapsedTitleTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
+        viewBinding.collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(getContext(), android.R.color.white));
+        viewBinding.collapsingToolbar.setExpandedTitleTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
+        viewBinding.collapsingToolbar.setTitle(skiArea.getName());
     }
 
     private void setToolbarBackButton() {
-        final Drawable upArrow = ContextCompat.getDrawable(getContext(), R.drawable.abc_ic_ab_back_material);
-        upArrow.setColorFilter(ContextCompat.getColor(getContext(), android.R.color.white), PorterDuff.Mode.SRC_ATOP);
-
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(upArrow);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(viewBinding.toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_bottom);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initializeViews() {
-        Glide.with(getContext()).load(skiArea.getImageUrlLogo()).into(ivSkiAreaLogo);
-        tvSkiAreaCountry.setText(skiArea.getCountry());
-        tvSkiAreaState.setText(skiArea.getState());
-        tvSkiAreaDescription.setText(skiArea.getDescription());
+        Glide.with(getContext()).load(skiArea.getImageUrlLogo()).into(viewBinding.ivSkiareaLogo);
+        viewBinding.tvSkiareaCountry.setText(skiArea.getCountry());
+        viewBinding.tvSkiareaState.setText(skiArea.getState());
+        viewBinding.tvSkiareaDescription.setText(skiArea.getDescription());
 
-        tvSkiAreaMinHeight.setText(skiArea.getMinHeight() + "m");
-        tvSkiAreaMaxHeight.setText(skiArea.getMaxHeight() + "m");
+        viewBinding.tvSkiareaMinHeight.setText(skiArea.getMinHeight() + "m");
+        viewBinding.tvSkiareaMaxHeight.setText(skiArea.getMaxHeight() + "m");
 
-        tvSkiAreaEasy.setText(String.format(getContext().getString(R.string.skiarea_slopes_easy), skiArea.getSlopesEasy()));
-        tvSkiAreaModerate.setText(String.format(getContext().getString(R.string.skiarea_slopes_moderate), skiArea.getSlopesModerate()));
-        tvSkiAreaExpert.setText(String.format(getContext().getString(R.string.skiarea_slopes_expert), skiArea.getSlopesExpert()));
-        tvSkiAreaFreeride.setText(String.format(getContext().getString(R.string.skiarea_slopes_freeride), skiArea.getSlopesFreeride()));
+        viewBinding.tvSkiareaSlopesEasy.setText(String.format(getContext().getString(R.string.skiarea_slopes_easy), skiArea.getSlopesEasy()));
+        viewBinding.tvSkiareaSlopesModerate.setText(String.format(getContext().getString(R.string.skiarea_slopes_moderate), skiArea.getSlopesModerate()));
+        viewBinding.tvSkiareaSlopesExpert.setText(String.format(getContext().getString(R.string.skiarea_slopes_expert), skiArea.getSlopesExpert()));
+        viewBinding.tvSkiareaSlopesFreeride.setText(String.format(getContext().getString(R.string.skiarea_slopes_freeride), skiArea.getSlopesFreeride()));
 
-        tvSkiAreaDragLifts.setText(String.valueOf(skiArea.getDragLifts()));
-        tvSkiAreaChairLifts.setText(String.valueOf(skiArea.getChairLifts()));
-        tvSkiAreaGondolaLifts.setText(String.valueOf(skiArea.getGondolaLifts()));
-        tvSkiAreaAerialTramways.setText(String.valueOf(skiArea.getAerialTramways()));
-        tvSkiAreaRailways.setText(String.valueOf(skiArea.getRailways()));
+        viewBinding.tvSkiareaDragLifts.setText(String.valueOf(skiArea.getDragLifts()));
+        viewBinding.tvSkiareaChairLifts.setText(String.valueOf(skiArea.getChairLifts()));
+        viewBinding.tvSkiareaGondolaLifts.setText(String.valueOf(skiArea.getGondolaLifts()));
+        viewBinding.tvSkiareaAerialTramways.setText(String.valueOf(skiArea.getAerialTramways()));
+        viewBinding.tvSkiareaRailways.setText(String.valueOf(skiArea.getRailways()));
     }
 
     private void requestWeather() {
