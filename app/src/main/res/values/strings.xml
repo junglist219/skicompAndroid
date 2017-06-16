@@ -23,6 +23,7 @@
     <string name="error_password_not_valid">Passwort muss aus mindestens einem Klein-, einem Großbuchstaben und einem Zeichen bestehen</string>
     <string name="error_firstname_not_valid">Vorname enthält ungültige Zeichen</string>
     <string name="error_lastname_not_valid">Nachname enthält ungültige Zeichen</string>
+    <string name="error_address_not_valid">Ungültige Adresse</string>
 
     <string name="onboarding_register_button_forward">WEITER</string>
     <string name="onboarding_register_button_complete">JETZT REGISTRIEREN</string>
@@ -30,12 +31,13 @@
     <string name="forgot_password_dialog_text">Du hast dein Passwort vergessen?\nKein Problem!\nGib deinen Nutzername ein und wir senden dir eine E-Mail mit deinem neuen Passwort zu.</string>
     <string name="forgot_password_dialog_button">PASSWORT ZUSCHICKEN</string>
 
+    <string name="skiarea_favorites_button">Favoriten (%d)</string>
+
     <string name="skiarea_slopes_easy">%d km - einfach</string>
     <string name="skiarea_slopes_moderate">%d km - mittel</string>
     <string name="skiarea_slopes_expert">%d km - schwer</string>
     <string name="skiarea_slopes_freeride">%d km - freeride</string>
 
     <string name="heroku_profile_picture_url">https://skiservicetest.herokuapp.com/images/%s.png</string>
-    <string name="error_address_not_valid">Ungültige Adresse</string>
 
 </resources>

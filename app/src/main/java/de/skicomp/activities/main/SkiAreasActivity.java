@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -47,26 +46,11 @@ public class SkiAreasActivity extends BottomNavigationActivity implements SkiAre
 
         List<SkiArea> skiAreaList = SkiAreaManager.getInstance().getSkiAreas();
         if (skiAreaList == null || skiAreaList.isEmpty()) {
+            ProgressDialogManager.getInstance().startProgressDialog(getApplicationContext());
             SkiAreaManager.getInstance().loadSkiAreas();
         } else {
             showSkiAreaCountryOverview();
         }
-
-        /*
-        RecyclerView rvSkiAreas = (RecyclerView) findViewById(R.id.rv_skiareas_overview);
-        rvSkiAreas.setHasFixedSize(true);
-
-        StaggeredGridLayoutManager stGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        rvSkiAreas.setLayoutManager(stGridLayoutManager);
-
-        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(getApplicationContext(), R.dimen.rv_skiareas_overview_item_offset);
-        rvSkiAreas.addItemDecoration(itemOffsetDecoration);
-
-        if (SessionManager.getInstance().getSkiAreas() != null) {
-            SkiAreaAdapter skiAreaAdapter = new SkiAreaAdapter(getApplicationContext(), this, SessionManager.getInstance().getSkiAreas());
-            rvSkiAreas.setAdapter(skiAreaAdapter);
-        }
-        */
     }
 
     @Override
@@ -99,7 +83,7 @@ public class SkiAreasActivity extends BottomNavigationActivity implements SkiAre
         viewBinding.rvSkiareasCountryOverview.setLayoutManager(stGridLayoutManager);
         viewBinding.rvSkiareasCountryOverview.setHasFixedSize(true);
 
-        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(getApplicationContext(), R.dimen.rv_skiareas_overview_item_offset);
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(getApplicationContext(), R.dimen.default_padding);
         viewBinding.rvSkiareasCountryOverview.addItemDecoration(itemOffsetDecoration);
 
         if (skiAreaCountryList != null && !skiAreaCountryList.isEmpty()) {
@@ -113,7 +97,6 @@ public class SkiAreasActivity extends BottomNavigationActivity implements SkiAre
     public void onSkiAreaEvent(SkiAreaEvent event) {
         ProgressDialogManager.getInstance().stopProgressDialog();
         if (event instanceof SkiAreaEventSuccess) {
-            Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
             showSkiAreaCountryOverview();
         } else {
             Response response = ((SkiAreaEventFailure) event).getResponse();

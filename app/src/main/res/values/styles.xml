@@ -45,6 +45,11 @@
         <item name="android:padding">5dp</item>
     </style>
 
+    <style name="DefaultButton.White" parent="DefaultButton">
+        <item name="android:background">@drawable/background_button_white</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="dialog_animation_slide">
         <item name="android:windowEnterAnimation">@anim/slide_from_bottom</item>
         <item name="android:windowExitAnimation">@anim/slide_to_bottom</item>
