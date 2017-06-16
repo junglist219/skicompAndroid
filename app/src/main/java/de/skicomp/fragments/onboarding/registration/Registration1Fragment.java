@@ -39,6 +39,8 @@ public class Registration1Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_registration_1, container, false);
 
+        ((TextView) getParentFragment().getView().findViewById(R.id.tv_registration_toolbar_subtitle)).setText("1 / 2");
+
         return viewBinding.getRoot();
     }
 
@@ -46,12 +48,6 @@ public class Registration1Fragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         setListener((Registration1CompletedListener) getParentFragment());
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        ((TextView) getParentFragment().getView().findViewById(R.id.tv_registration_toolbar_subtitle)).setText("1 / 3");
     }
 
     public void setListener(Registration1CompletedListener listener) {

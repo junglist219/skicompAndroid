@@ -36,5 +36,6 @@
     <string name="skiarea_slopes_freeride">%d km - freeride</string>
 
     <string name="heroku_profile_picture_url">https://skiservicetest.herokuapp.com/images/%s.png</string>
+    <string name="error_address_not_valid">Ungültige Adresse</string>
 
 </resources>

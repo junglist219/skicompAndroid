@@ -1,7 +1,6 @@
 package de.skicomp.fragments.onboarding.registration;
 
 import android.databinding.DataBindingUtil;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,22 +8,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import de.skicomp.R;
 import de.skicomp.databinding.FragmentRegistrationContainerBinding;
 import de.skicomp.models.User;
-import de.skicomp.network.SkiService;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import de.skicomp.utils.Utils;
 
 /**
  * Created by benjamin.schneider on 15.06.17.
  */
 
 public class RegistrationContainerFragment extends Fragment implements Registration1Fragment.Registration1CompletedListener,
-                                                                        Registration2Fragment.Registration2CompletedListener,
-                                                                        Registration3Fragment.Registration3CompletedListener {
+                                                                        Registration2Fragment.Registration2CompletedListener {
 
     public static final String TAG = RegistrationContainerFragment.class.getSimpleName();
 
@@ -64,10 +60,6 @@ public class RegistrationContainerFragment extends Fragment implements Registrat
                 Registration2Fragment registration2Fragment = (Registration2Fragment) getChildFragmentManager().findFragmentByTag(Registration2Fragment.TAG);
                 registration2Fragment.onClickForward();
                 break;
-            case 3:
-                Registration3Fragment registration3Fragment = (Registration3Fragment) getChildFragmentManager().findFragmentByTag(Registration3Fragment.TAG);
-                registration3Fragment.onClickForward();
-                break;
             default:
                 break;
         }
@@ -94,45 +86,30 @@ public class RegistrationContainerFragment extends Fragment implements Registrat
         user.setCity(city);
         user.setCountry(country);
 
-        getChildFragmentManager().beginTransaction()
-                .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left, R.anim.slide_from_left, R.anim.slide_to_right)
-                .replace(R.id.fl_container_registration, new Registration3Fragment(), Registration3Fragment.TAG)
-                .addToBackStack(Registration3Fragment.TAG)
-                .commit();
-        currentRegistrationStep++;
-    }
+        Utils.showToast(getContext(), "Registrierung", Toast.LENGTH_SHORT);
 
-    @Override
-    public void onCompletedRegistrationStep3(Bitmap bitmap) {
-        SkiService.getInstance().register(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.isSuccessful()) {
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-
-            }
-        }, user);
+//        SkiService.getInstance().register(new Callback<User>() {
+//            @Override
+//            public void onResponse(Call<User> call, Response<User> response) {
+//                if (response.isSuccessful()) {
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<User> call, Throwable t) {
+//
+//            }
+//        }, user);
     }
 
     public boolean onBackPressed() {
         if (getChildFragmentManager().getBackStackEntryCount() > 0) {
-            switch (currentRegistrationStep) {
-                case 2:
-                    Registration1Fragment registration1Fragment = (Registration1Fragment) getChildFragmentManager().findFragmentByTag(Registration1Fragment.TAG);
-                    registration1Fragment.setListener(this);
-                    viewBinding.tvRegistrationToolbarSubtitle.setText("1 / 3");
-                    break;
-                case 3:
-                    Registration2Fragment registration2Fragment = (Registration2Fragment) getChildFragmentManager().findFragmentByTag(Registration2Fragment.TAG);
-                    registration2Fragment.setListener(this);
-                    viewBinding.tvRegistrationToolbarSubtitle.setText("2 / 3");
-                    viewBinding.btForward.setText(R.string.onboarding_register_button_forward);
-                    break;
+            if (currentRegistrationStep == 2) {
+                Registration1Fragment registration1Fragment = (Registration1Fragment) getChildFragmentManager().findFragmentByTag(Registration1Fragment.TAG);
+                registration1Fragment.setListener(this);
+                viewBinding.tvRegistrationToolbarSubtitle.setText("1 / 2");
+                viewBinding.btForward.setText(R.string.onboarding_register_button_forward);
             }
             currentRegistrationStep--;
             getChildFragmentManager().popBackStack();
