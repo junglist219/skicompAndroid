@@ -10,7 +10,7 @@
 
     <color name="white">@android:color/white</color>
 
-    <color name="background_light_grey">#F1F1F4</color>
+    <color name="background_light_gray">#F1F1F4</color>
     <color name="background_white">#FFFFFF</color>
 
     <color name="text_color_title">#54676E</color>

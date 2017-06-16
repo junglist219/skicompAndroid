@@ -112,6 +112,7 @@ public class SkiAreasActivity extends BottomNavigationActivity implements SkiAre
         skiAreaOverviewFragment.setArguments(bundle);
 
         getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out, R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out)
                 .add(R.id.fl_container, skiAreaOverviewFragment)
                 .addToBackStack(SkiAreaOverviewFragment.TAG)
                 .commit();

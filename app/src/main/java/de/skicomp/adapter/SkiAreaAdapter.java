@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -45,8 +46,16 @@ public class SkiAreaAdapter extends RecyclerView.Adapter<SkiAreaAdapter.SkiAreaV
     public void onBindViewHolder(SkiAreaViewHolder holder, int position) {
         final SkiArea skiArea = skiAreaList.get(position);
 
+//        Glide.with(context)
+//                .load(skiArea.getImageUrlLogo())
+//                .into(holder.ivSkiAreaLogo);
+
         holder.tvSkiAreaName.setText(skiArea.getName());
         holder.tvSkiAreaState.setText(skiArea.getState());
+
+        if (position == skiAreaList.size() - 1) {
+            holder.vDivider.setVisibility(View.GONE);
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,13 +72,17 @@ public class SkiAreaAdapter extends RecyclerView.Adapter<SkiAreaAdapter.SkiAreaV
 
     class SkiAreaViewHolder extends RecyclerView.ViewHolder {
 
+        ImageView ivSkiAreaLogo;
         TextView tvSkiAreaName;
         TextView tvSkiAreaState;
+        View vDivider;
 
         SkiAreaViewHolder(View itemView) {
             super(itemView);
+            ivSkiAreaLogo = (ImageView) itemView.findViewById(R.id.iv_skiarea_logo);
             tvSkiAreaName = (TextView) itemView.findViewById(R.id.tv_skiarea_name);
             tvSkiAreaState = (TextView) itemView.findViewById(R.id.tv_skiarea_state);
+            vDivider = itemView.findViewById(R.id.v_divider);
         }
     }
 

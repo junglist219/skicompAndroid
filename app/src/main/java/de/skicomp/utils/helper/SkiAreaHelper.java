@@ -1,6 +1,8 @@
 package de.skicomp.utils.helper;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +46,14 @@ public class SkiAreaHelper {
                 filteredSkiAreaList.add(skiArea);
             }
         }
+
+        Collections.sort(filteredSkiAreaList, new Comparator<SkiArea>() {
+            @Override
+            public int compare(SkiArea skiArea1, SkiArea skiArea2) {
+                return skiArea1.getName().compareToIgnoreCase(skiArea2.getName());
+            }
+        });
+
         return filteredSkiAreaList;
     }
 

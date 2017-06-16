@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/background_light_grey">
+    android:background="@color/background_light_gray">
 
     <ImageView
         android:id="@+id/iv_skiarea"
@@ -15,12 +15,12 @@
         android:src="@drawable/image_oesterreich"/>
 
     <TextView
+        style="@style/DefaultText.DarkGray"
         android:id="@+id/tv_skiarea_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textSize="20sp"
-        android:textColor="@color/text_color_title"
         android:text="Österreich"/>
 
 </RelativeLayout>

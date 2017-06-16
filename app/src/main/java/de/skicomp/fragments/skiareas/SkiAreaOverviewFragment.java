@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,10 +41,20 @@ public class SkiAreaOverviewFragment extends Fragment implements SkiAreaAdapter.
         if (bundle != null) {
             String countryName = bundle.getString(KEY_SKIAREAS_COUNTRY);
             skiAreaList = SkiAreaHelper.filterSkiAreasByCountry(SkiAreaManager.getInstance().getSkiAreas(), countryName);
+
+            initToolbar(countryName);
             initRecyclerView();
         }
 
         return viewBinding.getRoot();
+    }
+
+    private void initToolbar(String countryName) {
+        ((AppCompatActivity) getActivity()).setSupportActionBar(viewBinding.toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_bottom);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        viewBinding.toolbarTitle.setText(countryName);
     }
 
     private void initRecyclerView() {
@@ -59,6 +70,7 @@ public class SkiAreaOverviewFragment extends Fragment implements SkiAreaAdapter.
         skiAreaFragment.setArguments(bundle);
 
         getActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out, R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out)
                 .add(R.id.fl_container, skiAreaFragment)
                 .addToBackStack(SkiAreaFragment.TAG)
                 .commit();
