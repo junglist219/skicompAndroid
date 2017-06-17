@@ -37,10 +37,11 @@ public class RegistrationContainerFragment extends Fragment implements Registrat
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(viewBinding.toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_bottom);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getChildFragmentManager().beginTransaction()
-                .setCustomAnimations(0, R.anim.slide_to_left)
+                .setCustomAnimations(0, R.anim.bottom_sheet_slide_in)
                 .replace(R.id.fl_container_registration, new Registration1Fragment(), Registration1Fragment.TAG)
                 .commit();
 
@@ -72,7 +73,8 @@ public class RegistrationContainerFragment extends Fragment implements Registrat
         user.setPassword(password);
 
         getChildFragmentManager().beginTransaction()
-                .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left, R.anim.slide_from_left, R.anim.slide_to_right)
+                //.setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left, R.anim.slide_from_left, R.anim.slide_to_right)
+                .setCustomAnimations(R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out, R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out)
                 .replace(R.id.fl_container_registration, new Registration2Fragment(), Registration2Fragment.TAG)
                 .addToBackStack(Registration2Fragment.TAG)
                 .commit();

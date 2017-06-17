@@ -59,7 +59,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:background="@color/background_white"
+                            android:background="@drawable/background_light_gray_rounded_corners"
                             android:orientation="vertical">
 
                             <RelativeLayout
@@ -202,41 +202,16 @@
 
                             </RelativeLayout>
 
+                            <TextView
+                                style="@style/DefaultText.DarkGray"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:padding="@dimen/default_padding"
+                                android:text="@string/logout"
+                                android:onClick="@{profileHandler::onClickLogout}"/>
+
                         </LinearLayout>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:background="@color/background_white">
-
-                            <Button
-                                android:id="@+id/bt_update_data"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:background="@drawable/background_button"
-                                android:paddingLeft="10dp"
-                                android:paddingRight="10dp"
-                                android:onClick="@{profileHandler::onClickUpdateData}"
-                                android:text="Daten aktualisieren"
-                                android:textAllCaps="false"
-                                android:textColor="@color/text_color_title" />
-
-                            <Button
-                                android:id="@+id/bt_logout"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_alignParentRight="true"
-                                android:layout_margin="10dp"
-                                android:background="@drawable/background_button"
-                                android:onClick="@{profileHandler::onClickLogout}"
-                                android:text="Logout"
-                                android:textAllCaps="false"
-                                android:textColor="@color/text_color_title" />
-
-                        </RelativeLayout>
 
                     </LinearLayout>
 

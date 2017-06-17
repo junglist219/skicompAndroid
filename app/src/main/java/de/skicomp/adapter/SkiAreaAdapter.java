@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -53,7 +54,10 @@ public class SkiAreaAdapter extends RecyclerView.Adapter<SkiAreaAdapter.SkiAreaV
         holder.tvSkiAreaName.setText(skiArea.getName());
         holder.tvSkiAreaState.setText(skiArea.getState());
 
-        if (position == skiAreaList.size() - 1) {
+        if (position == 0) {
+            holder.rlSkiAreaBackground.setBackgroundResource(R.drawable.background_light_gray_rounded_corners_top);
+        } else if (position == skiAreaList.size() - 1) {
+            holder.rlSkiAreaBackground.setBackgroundResource(R.drawable.background_light_gray_rounded_corners_bottom);
             holder.vDivider.setVisibility(View.GONE);
         }
 
@@ -72,6 +76,7 @@ public class SkiAreaAdapter extends RecyclerView.Adapter<SkiAreaAdapter.SkiAreaV
 
     class SkiAreaViewHolder extends RecyclerView.ViewHolder {
 
+        RelativeLayout rlSkiAreaBackground;
         ImageView ivSkiAreaLogo;
         TextView tvSkiAreaName;
         TextView tvSkiAreaState;
@@ -79,6 +84,7 @@ public class SkiAreaAdapter extends RecyclerView.Adapter<SkiAreaAdapter.SkiAreaV
 
         SkiAreaViewHolder(View itemView) {
             super(itemView);
+            rlSkiAreaBackground = (RelativeLayout) itemView.findViewById(R.id.rl_skiarea);
             ivSkiAreaLogo = (ImageView) itemView.findViewById(R.id.iv_skiarea_logo);
             tvSkiAreaName = (TextView) itemView.findViewById(R.id.tv_skiarea_name);
             tvSkiAreaState = (TextView) itemView.findViewById(R.id.tv_skiarea_state);

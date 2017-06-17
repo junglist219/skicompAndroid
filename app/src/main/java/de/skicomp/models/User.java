@@ -11,6 +11,10 @@ import com.j256.ormlite.table.DatabaseTable;
 public class User {
 
     @DatabaseField(id = true)
+    @SerializedName("id")
+    private int id;
+
+    @DatabaseField
     @SerializedName("username")
     private String username;
 
@@ -46,15 +50,8 @@ public class User {
         // default constructor
     }
 
-    public User(String username, String firstname, String lastname, String email, String password, String city, String country, boolean trackingEnabled) {
-        this.username = username;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-        this.city = city;
-        this.country = country;
-        this.trackingEnabled = trackingEnabled;
+    public int getId() {
+        return id;
     }
 
     public String getUsername() {

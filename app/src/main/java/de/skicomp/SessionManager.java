@@ -19,22 +19,26 @@ import de.skicomp.network.SkiService;
 
 public class SessionManager {
 
-    private static final String GLOBAL_PREFS = "globalPrefs_";
+    private static final String GLOBAL_PREFS = "global_";
+    private static final String USER_PREFS = "user_";
 
     private static final String KEY_USERNAME = "keyUsername";
     private static final String KEY_PW = "keyPW";
-    private static final String KEY_SKI_AREAS = "keySkiAreas";
+
+    private static final String KEY_SKI_AREA_FAVORITES = "keySkiAreaFavorites";
 
     private static SessionManager instance;
 
-    private SharedPreferences sharedPreferences;
+    private SharedPreferences globalPrefs;
+    private SharedPreferences userPrefs;
 
     private Gson gson;
     private Type listTypeSkiArea;
 
     private SessionManager(Context context) {
         synchronized (SessionManager.class) {
-            sharedPreferences = context.getSharedPreferences(GLOBAL_PREFS, Context.MODE_PRIVATE);
+            globalPrefs = context.getSharedPreferences(GLOBAL_PREFS, Context.MODE_PRIVATE);
+            userPrefs = context.getSharedPreferences(USER_PREFS, Context.MODE_PRIVATE);
 
             gson = new Gson();
             listTypeSkiArea = new TypeToken<List<SkiArea>>() {}.getType();
@@ -56,27 +60,27 @@ public class SessionManager {
     }
 
     public void setUsername(String username) {
-        sharedPreferences.edit().putString(KEY_USERNAME, username).apply();
+        userPrefs.edit().putString(KEY_USERNAME, username).apply();
     }
 
     public String getUsername() {
-        return sharedPreferences.getString(KEY_USERNAME, "");
+        return userPrefs.getString(KEY_USERNAME, "");
     }
 
     public void setPassword(String password) {
-        sharedPreferences.edit().putString(KEY_PW, password).apply();
+        userPrefs.edit().putString(KEY_PW, password).apply();
     }
 
     public String getPassword() {
-        return sharedPreferences.getString(KEY_PW, "");
+        return userPrefs.getString(KEY_PW, "");
     }
 
-    public void setSkiAreas(List<SkiArea> skiAreaList) {
-        sharedPreferences.edit().putString(KEY_SKI_AREAS, gson.toJson(skiAreaList)).apply();
+    public void setSkiAreaFavorites(int userID, List<SkiArea> skiAreaList) {
+        globalPrefs.edit().putString(KEY_SKI_AREA_FAVORITES.concat(String.valueOf(userID)), gson.toJson(skiAreaList)).apply();
     }
 
-    public List<SkiArea> getSkiAreas() {
-        return gson.fromJson(sharedPreferences.getString(KEY_SKI_AREAS, ""), listTypeSkiArea);
+    public List<SkiArea> getSkiAreaFavorites(int userID) {
+        return gson.fromJson(globalPrefs.getString(KEY_SKI_AREA_FAVORITES.concat(String.valueOf(userID)), ""), listTypeSkiArea);
     }
 
     public boolean isLoggedIn() {
@@ -84,10 +88,8 @@ public class SessionManager {
     }
 
     public void clearUserData() {
-        setPassword("");
-        setUsername("");
+        userPrefs.edit().clear().apply();
         SkiService.getInstance().reset();
-
         UserManager.getInstance().resetUser();
     }
 

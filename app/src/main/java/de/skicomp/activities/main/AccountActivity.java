@@ -5,7 +5,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -49,11 +48,6 @@ public class AccountActivity extends BottomNavigationActivity {
     public void setSelectedMenuItem() {
         viewBinding.navigation.btMenuProfileSelected.setVisibility(View.VISIBLE);
         viewBinding.navigation.btMenuProfile.setImageResource(R.drawable.ic_menu_account_selected);
-    }
-
-    @SuppressWarnings("unused")
-    public void onClickUpdateData(View view) {
-        Toast.makeText(getApplicationContext(), "Daten aktualisieren", Toast.LENGTH_SHORT).show();
     }
 
     @SuppressWarnings("unused")

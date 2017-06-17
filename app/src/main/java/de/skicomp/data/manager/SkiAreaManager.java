@@ -7,8 +7,10 @@ import android.util.Log;
 import org.greenrobot.eventbus.EventBus;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import de.skicomp.SessionManager;
 import de.skicomp.data.DatabaseManager;
 import de.skicomp.events.skiarea.SkiAreaEventFailure;
 import de.skicomp.events.skiarea.SkiAreaEventSuccess;
@@ -71,6 +73,22 @@ public class SkiAreaManager implements Callback<List<SkiArea>> {
     public void resetSkiAreas() {
         DatabaseManager.getInstance().clearTable(SkiArea.class);
     }
+
+    //----------------------------------------------------------------------------------------------
+    public List<SkiArea> getFavoriteSkiAreas() {
+        List<SkiArea> skiAreaFavoritesList = SessionManager.getInstance().getSkiAreaFavorites(UserManager.getInstance().getUser().getId());
+        if (skiAreaFavoritesList == null) {
+            skiAreaFavoritesList = new ArrayList<>();
+        }
+        return skiAreaFavoritesList;
+    }
+
+    public void addSkiAreaToFavorites(SkiArea skiArea) {
+        List<SkiArea> skiAreaFavorites = getFavoriteSkiAreas();
+        skiAreaFavorites.add(skiArea);
+        SessionManager.getInstance().setSkiAreaFavorites(UserManager.getInstance().getUser().getId(), skiAreaFavorites);
+    }
+    //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
 

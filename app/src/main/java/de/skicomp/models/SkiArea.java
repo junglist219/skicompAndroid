@@ -16,6 +16,7 @@ public class SkiArea implements Serializable {
     @SerializedName("id")
     private int id;
 
+    @DatabaseField
     @SerializedName("name")
     private String name;
 

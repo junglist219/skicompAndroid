@@ -47,12 +47,14 @@ public class SkiAreaHelper {
             }
         }
 
-        Collections.sort(filteredSkiAreaList, new Comparator<SkiArea>() {
-            @Override
-            public int compare(SkiArea skiArea1, SkiArea skiArea2) {
-                return skiArea1.getName().compareToIgnoreCase(skiArea2.getName());
-            }
-        });
+        if (skiAreaList.size() > 1) {
+            Collections.sort(filteredSkiAreaList, new Comparator<SkiArea>() {
+                @Override
+                public int compare(SkiArea skiArea1, SkiArea skiArea2) {
+                    return skiArea1.getName().compareToIgnoreCase(skiArea2.getName());
+                }
+            });
+        }
 
         return filteredSkiAreaList;
     }

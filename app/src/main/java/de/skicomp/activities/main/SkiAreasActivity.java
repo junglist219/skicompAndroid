@@ -43,10 +43,12 @@ public class SkiAreasActivity extends BottomNavigationActivity implements SkiAre
         viewBinding.setHandler(this);
         viewBinding.rvSkiareasCountryOverview.setAdapter(new SkiAreaCountryAdapter(getApplicationContext(), this, new ArrayList<SkiAreaCountry>()));
 
+        String skiAreaFavoritesButtonTitle = String.format(getString(R.string.skiarea_favorites_button), SkiAreaManager.getInstance().getFavoriteSkiAreas().size());
+        viewBinding.btSkiareasFavorites.setText(skiAreaFavoritesButtonTitle);
 
         List<SkiArea> skiAreaList = SkiAreaManager.getInstance().getSkiAreas();
         if (skiAreaList == null || skiAreaList.isEmpty()) {
-            ProgressDialogManager.getInstance().startProgressDialog(getApplicationContext());
+//            ProgressDialogManager.getInstance().startProgressDialog(getApplicationContext());
             SkiAreaManager.getInstance().loadSkiAreas();
         } else {
             showSkiAreaCountryOverview();
@@ -74,6 +76,25 @@ public class SkiAreasActivity extends BottomNavigationActivity implements SkiAre
     protected void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
+    }
+
+    @SuppressWarnings("unused")
+    public void onClickFavorites(View view) {
+        List<SkiArea> skiAreaList = SkiAreaManager.getInstance().getFavoriteSkiAreas();
+
+        /*
+        Bundle bundle = new Bundle();
+        bundle.putString(SkiAreaOverviewFragment.KEY_SKIAREAS_OVERVIEW_TITLE, getString(R.string.favorites_title));
+        bundle.putSerializable(SkiAreaOverviewFragment.KEY_SKIAREAS_OVERVIEW_LIST, skiAreaList);
+        SkiAreaOverviewFragment skiAreaOverviewFragment = new SkiAreaOverviewFragment();
+        skiAreaOverviewFragment.setArguments(bundle);
+        */
+
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out, R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out)
+                .add(R.id.fl_container, new SkiAreaOverviewFragment())
+                .addToBackStack(SkiAreaOverviewFragment.TAG)
+                .commit();
     }
 
     private void showSkiAreaCountryOverview() {
@@ -107,7 +128,7 @@ public class SkiAreasActivity extends BottomNavigationActivity implements SkiAre
     @Override
     public void onSkiAreaCountrySelected(String country) {
         Bundle bundle = new Bundle();
-        bundle.putString(SkiAreaOverviewFragment.KEY_SKIAREAS_COUNTRY, country);
+        bundle.putString(SkiAreaOverviewFragment.KEY_SKIAREAS_OVERVIEW_TITLE, country);
         SkiAreaOverviewFragment skiAreaOverviewFragment = new SkiAreaOverviewFragment();
         skiAreaOverviewFragment.setArguments(bundle);
 

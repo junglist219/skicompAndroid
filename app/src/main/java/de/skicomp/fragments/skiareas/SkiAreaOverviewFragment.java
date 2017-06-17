@@ -27,7 +27,8 @@ public class SkiAreaOverviewFragment extends Fragment implements SkiAreaAdapter.
 
     public static final String TAG = SkiAreaOverviewFragment.class.getSimpleName();
 
-    public static final String KEY_SKIAREAS_COUNTRY = "keySkiAreasCountry";
+    public static final String KEY_SKIAREAS_OVERVIEW_TITLE = "keySkiAreasTitle";
+    public static final String KEY_SKIAREAS_OVERVIEW_LIST = "keySkiAreasList";
 
     private FragmentSkiareaOverviewBinding viewBinding;
     private List<SkiArea> skiAreaList;
@@ -39,7 +40,7 @@ public class SkiAreaOverviewFragment extends Fragment implements SkiAreaAdapter.
 
         Bundle bundle = getArguments();
         if (bundle != null) {
-            String countryName = bundle.getString(KEY_SKIAREAS_COUNTRY);
+            String countryName = bundle.getString(KEY_SKIAREAS_OVERVIEW_TITLE);
             skiAreaList = SkiAreaHelper.filterSkiAreasByCountry(SkiAreaManager.getInstance().getSkiAreas(), countryName);
 
             initToolbar(countryName);
