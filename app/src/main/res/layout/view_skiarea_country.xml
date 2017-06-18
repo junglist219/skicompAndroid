@@ -21,7 +21,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:adjustViewBounds="true"
-        android:background="@drawable/background_light_gray_rounded_corners_bottom"
         android:src="@drawable/image_oesterreich"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/corner_radius"
+        android:background="@drawable/background_light_gray_rounded_corners_bottom"/>
 
 </LinearLayout>

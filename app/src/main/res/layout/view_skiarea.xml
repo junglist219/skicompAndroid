@@ -9,9 +9,7 @@
         android:id="@+id/rl_skiarea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/default_padding"
-        android:paddingBottom="@dimen/default_padding"
-        android:paddingLeft="@dimen/default_padding"
+        android:padding="@dimen/default_padding"
         android:background="@color/background_light_gray">
 
         <LinearLayout
@@ -39,16 +37,6 @@
                 android:text="Wallis"/>
 
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/iv_skiarea_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="@dimen/default_padding"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_account"/>
 
     </RelativeLayout>
 

@@ -3,6 +3,7 @@
     <dimen name="onboarding_margin">35dp</dimen>
 
     <dimen name="default_padding">8dp</dimen>
+    <dimen name="corner_radius">5dp</dimen>
     <dimen name="rv_skiareas_overview_item_offset">10dp</dimen>
 
     <dimen name="padding_bottom_navigation">18dp</dimen>
