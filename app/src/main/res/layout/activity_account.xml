@@ -45,21 +45,44 @@
                             app:civ_border_width="2dp" />
 
                         <TextView
+                            style="@style/DefaultText.White"
                             android:id="@+id/tv_username"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:padding="5dp"
+                            android:padding="@dimen/default_padding"
                             android:text="@{user.username}"
                             android:textColor="@color/background_white"
                             android:textSize="20sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_light_gray_rounded_corners_top">
+
+                            <TextView
+                                style="@style/DefaultText.DarkGray"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/default_padding"
+                                android:text="Meine Daten"/>
+
+                            <TextView
+                                style="@style/DefaultText.DarkGray"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:padding="@dimen/default_padding"
+                                android:text="@string/account_edit"/>
+
+                        </RelativeLayout>
 
                         <LinearLayout
                             android:id="@+id/ll_account_info"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:background="@drawable/background_light_gray_rounded_corners"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/background_light_gray"
                             android:orientation="vertical">
 
                             <RelativeLayout
@@ -75,6 +98,7 @@
                                     android:src="@drawable/ic_account" />
 
                                 <TextView
+                                    style="@style/DefaultText"
                                     android:id="@+id/tv_name"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -85,6 +109,7 @@
                                     android:textSize="10sp" />
 
                                 <TextView
+                                    style="@style/DefaultText.DarkGray"
                                     android:id="@+id/tv_firstname"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -94,6 +119,7 @@
                                     android:textColor="@color/text_color_title" />
 
                                 <TextView
+                                    style="@style/DefaultText.DarkGray"
                                     android:id="@+id/tv_lastname"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -118,6 +144,7 @@
                                     android:src="@drawable/ic_home" />
 
                                 <TextView
+                                    style="@style/DefaultText"
                                     android:id="@+id/tv_account_home"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -128,13 +155,14 @@
                                     android:textSize="10sp" />
 
                                 <TextView
+                                    style="@style/DefaultText.DarkGray"
                                     android:id="@+id/tv_home"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignLeft="@id/tv_account_home"
                                     android:layout_below="@id/tv_account_home"
                                     android:textColor="@color/text_color_title"
-                                    android:text="@{user.city + ',' + user.country}" />
+                                    android:text="@{user.city + `, ` + user.country}" />
                             </RelativeLayout>
 
                             <RelativeLayout
@@ -150,6 +178,7 @@
                                     android:src="@drawable/ic_email" />
 
                                 <TextView
+                                    style="@style/DefaultText"
                                     android:id="@+id/tv_account_email"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -160,6 +189,7 @@
                                     android:textSize="10sp" />
 
                                 <TextView
+                                    style="@style/DefaultText.DarkGray"
                                     android:id="@+id/tv_profile"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -183,6 +213,7 @@
                                     android:src="@drawable/ic_share_position" />
 
                                 <TextView
+                                    style="@style/DefaultText.DarkGray"
                                     android:id="@+id/tv_profile_location"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -202,16 +233,27 @@
 
                             </RelativeLayout>
 
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_light_gray_rounded_corners_bottom">
+
                             <TextView
                                 style="@style/DefaultText.DarkGray"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="right"
+                                android:layout_alignParentRight="true"
                                 android:padding="@dimen/default_padding"
                                 android:text="@string/logout"
                                 android:onClick="@{profileHandler::onClickLogout}"/>
 
-                        </LinearLayout>
+                        </RelativeLayout>
 
                     </LinearLayout>
 

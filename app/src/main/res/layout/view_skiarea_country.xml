@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_light_gray_rounded_corners">
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/DefaultText.DarkGray"
+        android:id="@+id/tv_skiarea_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_padding"
+        android:background="@drawable/background_light_gray_rounded_corners_top"
+        android:textSize="20sp"
+        android:text="Österreich"/>
 
     <ImageView
         android:id="@+id/iv_skiarea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="40dp"
+        android:layout_marginTop="1dp"
         android:adjustViewBounds="true"
+        android:background="@drawable/background_light_gray_rounded_corners_bottom"
         android:src="@drawable/image_oesterreich"/>
 
-    <TextView
-        style="@style/DefaultText.DarkGray"
-        android:id="@+id/tv_skiarea_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="20sp"
-        android:text="Österreich"/>
-
-</RelativeLayout>
+</LinearLayout>

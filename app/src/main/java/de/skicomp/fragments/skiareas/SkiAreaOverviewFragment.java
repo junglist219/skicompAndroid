@@ -53,7 +53,6 @@ public class SkiAreaOverviewFragment extends Fragment implements SkiAreaAdapter.
     private void initToolbar(String countryName) {
         ((AppCompatActivity) getActivity()).setSupportActionBar(viewBinding.toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("");
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_bottom);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         viewBinding.toolbarTitle.setText(countryName);
     }

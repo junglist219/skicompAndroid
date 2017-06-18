@@ -31,6 +31,7 @@
     <string name="forgot_password_dialog_text">Du hast dein Passwort vergessen?\nKein Problem!\nGib deinen Nutzername ein und wir senden dir eine E-Mail mit deinem neuen Passwort zu.</string>
     <string name="forgot_password_dialog_button">PASSWORT ZUSCHICKEN</string>
 
+    <string name="account_edit"><u>aktualisieren</u></string>
     <string name="logout"><u>Logout</u></string>
 
     <string name="skiarea_favorites_button">Favoriten (%d)</string>
