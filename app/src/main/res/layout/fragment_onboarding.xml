@@ -34,11 +34,12 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@color/white"
             android:layout_weight="5">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/onboarding_margin">
 
                 <de.skicomp.views.SkiEditText

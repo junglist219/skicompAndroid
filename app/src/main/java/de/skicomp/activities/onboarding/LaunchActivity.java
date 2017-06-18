@@ -20,9 +20,9 @@ public class LaunchActivity extends BaseActivity {
 
         Intent intent;
         if (SessionManager.getInstance().isLoggedIn()) {
-            intent = new Intent(this, AccountActivity.class);
+            intent = new Intent(LaunchActivity.this, AccountActivity.class);
         } else {
-            intent = new Intent(this, OnboardingActivity.class);
+            intent = new Intent(LaunchActivity.this, OnboardingActivity.class);
         }
         startActivity(intent);
         finish();
