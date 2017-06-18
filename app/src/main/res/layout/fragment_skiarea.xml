@@ -179,7 +179,8 @@
                                 android:id="@+id/iv_skiarea_slopes_easy"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/ic_account"/>
+                                android:padding="@dimen/default_padding"
+                                android:src="@drawable/ic_slope_dot_easy"/>
 
                             <TextView
                                 style="@style/DefaultText.DarkGray"
@@ -201,7 +202,8 @@
                                 android:id="@+id/iv_skiarea_slopes_moderate"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/ic_account"/>
+                                android:padding="@dimen/default_padding"
+                                android:src="@drawable/ic_slope_dot_moderate"/>
 
                             <TextView
                                 style="@style/DefaultText.DarkGray"
@@ -223,7 +225,8 @@
                                 android:id="@+id/iv_skiarea_slopes_expert"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/ic_account"/>
+                                android:padding="@dimen/default_padding"
+                                android:src="@drawable/ic_slope_dot_expert"/>
 
                             <TextView
                                 style="@style/DefaultText.DarkGray"
@@ -245,7 +248,8 @@
                                 android:id="@+id/iv_skiarea_slopes_freeride"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/ic_account"/>
+                                android:padding="@dimen/default_padding"
+                                android:src="@drawable/ic_slope_dot_freeride"/>
 
                             <TextView
                                 style="@style/DefaultText.DarkGray"
