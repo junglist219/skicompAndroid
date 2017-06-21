@@ -45,6 +45,8 @@ public class SkiAreaFragment extends Fragment {
         if (bundle != null) {
             skiArea = (SkiArea) bundle.getSerializable(KEY_SKIAREA);
             viewBinding.setSkiArea(skiArea);
+            viewBinding.scSlopes.setSkiArea(skiArea);
+            viewBinding.scSlopes.invalidate();
 
 //            requestWeather();
         }

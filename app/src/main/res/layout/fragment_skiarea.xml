@@ -100,7 +100,7 @@
                             android:padding="@dimen/default_padding"
                             android:gravity="center_vertical"
                             android:background="@drawable/background_light_gray_rounded_corners_left"
-                            android:text="@{String.valueOf(skiArea.minHeight) + 'm'}"/>
+                            android:text="@{skiArea.displayMinHeight}"/>
 
                         <ImageView
                             android:layout_width="30dp"
@@ -134,7 +134,7 @@
                             android:padding="@dimen/default_padding"
                             android:gravity="center_vertical"
                             android:background="@drawable/background_light_gray_rounded_corners_left"
-                            android:text="@{String.valueOf(skiArea.maxHeight) + 'm'}"/>
+                            android:text="@{skiArea.displayMaxHeight}"/>
 
                     </RelativeLayout>
 
@@ -158,10 +158,26 @@
                     android:background="@drawable/background_light_gray_rounded_corners_bottom"
                     android:weightSum="2">
 
-                    <View
+                    <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <de.skicomp.views.SlopeCircle
+                            android:id="@+id/sc_slopes"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:rotation="-90" />
+
+                        <TextView
+                            style="@style/DefaultText.DarkGray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:textSize="@dimen/text_toolbar_title"
+                            android:text="@{skiArea.slopesLength}"/>
+
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -188,7 +204,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:paddingLeft="@dimen/default_padding"
-                                android:text="@{String.valueOf(skiArea.slopesEasy)}"/>
+                                android:text="@{skiArea.displaySlopesEasy}"/>
 
                         </LinearLayout>
 
@@ -211,7 +227,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:paddingLeft="@dimen/default_padding"
-                                android:text="@{String.valueOf(skiArea.slopesModerate)}"/>
+                                android:text="@{skiArea.displaySlopesModerate}"/>
 
                         </LinearLayout>
 
@@ -234,7 +250,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:paddingLeft="@dimen/default_padding"
-                                android:text="@{String.valueOf(skiArea.slopesExpert)}"/>
+                                android:text="@{skiArea.displaySlopesExpert}"/>
 
                         </LinearLayout>
 
@@ -257,7 +273,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:paddingLeft="@dimen/default_padding"
-                                android:text="@{String.valueOf(skiArea.slopesFreeride)}"/>
+                                android:text="@{skiArea.displaySlopesFreeride}"/>
 
                         </LinearLayout>
 

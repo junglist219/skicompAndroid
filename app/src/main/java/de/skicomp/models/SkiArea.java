@@ -1,5 +1,8 @@
 package de.skicomp.models;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
 import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -10,7 +13,7 @@ import java.io.Serializable;
  * Created by benjamin.schneider on 09.05.17.
  */
 @DatabaseTable(tableName = "skiarea")
-public class SkiArea implements Serializable {
+public class SkiArea extends BaseObservable implements Serializable {
 
     @DatabaseField(id = true)
     @SerializedName("id")
@@ -182,5 +185,49 @@ public class SkiArea implements Serializable {
 
     public double getBoundingBoxNorth() {
         return boundingBoxNorth;
+    }
+
+    @Bindable
+    public String getDisplayMinHeight() {
+        return String.valueOf(minHeight).concat("m");
+    }
+
+    @Bindable
+    public String getDisplayMaxHeight() {
+        return String.valueOf(maxHeight).concat("m");
+    }
+
+    @Bindable
+    public String getDisplaySlopesEasy() {
+        return concatWithKM(slopesEasy);
+    }
+
+    @Bindable
+    public String getDisplaySlopesModerate() {
+        return concatWithKM(slopesModerate);
+    }
+
+    @Bindable
+    public String getDisplaySlopesExpert() {
+        return String.valueOf(slopesExpert).concat("km");
+    }
+
+    @Bindable
+    public String getDisplaySlopesFreeride() {
+        return String.valueOf(slopesFreeride).concat("km");
+    }
+
+    @Bindable
+    public String getSlopesLength() {
+        int slopesLength = slopesEasy + slopesModerate + slopesExpert + slopesFreeride;
+        return String.valueOf(slopesLength).concat("km");
+    }
+
+    private String concatWithM(int intValue) {
+        return String.valueOf(intValue).concat(" m");
+    }
+
+    private String concatWithKM(int intValue) {
+        return String.valueOf(intValue).concat(" km");
     }
 }
