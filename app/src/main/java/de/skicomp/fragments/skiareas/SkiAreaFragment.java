@@ -3,19 +3,16 @@ package de.skicomp.fragments.skiareas;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-
-import java.lang.reflect.Field;
 
 import de.skicomp.R;
 import de.skicomp.activities.BaseActivity;
@@ -31,7 +28,7 @@ import retrofit2.Response;
  * Created by benjamin.schneider on 12.05.17.
  */
 
-public class SkiAreaFragment extends Fragment {
+public class SkiAreaFragment extends Fragment implements AppBarLayout.OnOffsetChangedListener {
 
     public static final String TAG = SkiAreaFragment.class.getSimpleName();
 
@@ -39,6 +36,10 @@ public class SkiAreaFragment extends Fragment {
 
     private SkiArea skiArea;
     private FragmentSkiareaBinding viewBinding;
+
+    // toolbar collapsed -> show title
+    boolean isShow = false;
+    int scrollRange = -1;
 
     @Nullable
     @Override
@@ -51,8 +52,7 @@ public class SkiAreaFragment extends Fragment {
             viewBinding.setSkiArea(skiArea);
             viewBinding.skiareaSlopes.scSlopes.setSkiArea(skiArea);
             viewBinding.skiareaSlopes.scSlopes.invalidate();
-
-//            requestWeather();
+            viewBinding.appBarLayout.addOnOffsetChangedListener(this);
         }
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(viewBinding.toolbar);
@@ -62,10 +62,17 @@ public class SkiAreaFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
-        TextView titleTextView = getTitleTextView();
+    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+        if (scrollRange == -1) {
+            scrollRange = appBarLayout.getTotalScrollRange();
+        }
+        if (scrollRange + verticalOffset == 0) {
+            viewBinding.collapsingToolbarLayout.setTitle(skiArea.getName());
+            isShow = true;
+        } else if(isShow) {
+            viewBinding.collapsingToolbarLayout.setTitle(" ");
+            isShow = false;
+        }
     }
 
     private void requestWeather() {
@@ -90,21 +97,5 @@ public class SkiAreaFragment extends Fragment {
                 Toast.makeText(getContext(), "failure", Toast.LENGTH_SHORT).show();
             }
         }, skiAreaCenter.latitude, skiAreaCenter.longitude);
-    }
-
-    public TextView getTitleTextView() {
-        View view = viewBinding.collapsingToolbar.findViewById(R.styleable.CollapsingToolbarLayout_toolbarId);
-
-        try {
-            Class<?> collapsingToolbarClass = CollapsingToolbarLayout.class;
-            Field titleTextViewField = collapsingToolbarClass.getDeclaredField("mTitleTextView");
-            titleTextViewField.setAccessible(true);
-            TextView tvTitle = (TextView) titleTextViewField.get(viewBinding.collapsingToolbar);
-
-            return tvTitle;
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 }

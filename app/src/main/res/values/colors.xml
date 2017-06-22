@@ -7,7 +7,7 @@
     <color name="transparent">@android:color/transparent</color>
     <color name="transparent_25">#25000000</color>
     <color name="transparent_50">#50000000</color>
-
+    
     <color name="slope_easy">#A60000FF</color>
     <color name="slope_moderate">#A6FF0000</color>
     <color name="slope_expert">#A6000000</color>
