@@ -40,4 +40,7 @@
     <string name="heroku_profile_picture_url">https://skiservicetest.herokuapp.com/images/%s.png</string>
     <string name="favorites_title">Favoriten</string>
 
+    <string name="skiarea_title_height">Höhe</string>
+    <string name="skiarea_title_slopes">Pisten</string>
+
 </resources>

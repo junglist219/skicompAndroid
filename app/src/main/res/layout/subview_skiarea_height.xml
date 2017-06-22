@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="skiArea" type="de.skicomp.models.SkiArea"/>
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/DefaultText.DarkGray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding"
+            android:padding="@dimen/default_padding"
+            android:background="@drawable/background_light_gray_rounded_corners_top"
+            android:text="@string/skiarea_title_height"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="1dp"
+            android:padding="@dimen/default_padding"
+            android:background="@drawable/background_light_gray_rounded_corners_bottom"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/DefaultText.DarkGray"
+                    android:id="@+id/tv_skiarea_min_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/default_padding"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/background_light_gray_rounded_corners_left"
+                    android:text="@{skiArea.displayMinHeight}"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_toRightOf="@id/tv_skiarea_min_height"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_account" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_skiarea_max_height"
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_account" />
+
+                <TextView
+                    style="@style/DefaultText.DarkGray"
+                    android:id="@+id/tv_skiarea_max_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_skiarea_max_height"
+                    android:padding="@dimen/default_padding"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/background_light_gray_rounded_corners_left"
+                    android:text="@{skiArea.displayMaxHeight}"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
