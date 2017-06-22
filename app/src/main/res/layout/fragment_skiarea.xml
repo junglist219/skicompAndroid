@@ -20,7 +20,7 @@
             android:fitsSystemWindows="true"
             app:elevation="0dp">
 
-            <android.support.design.widget.CollapsingToolbarLayout
+            <de.skicomp.views.collapsingToolbar.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
@@ -53,7 +53,7 @@
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                     app:title=""/>
 
-            </android.support.design.widget.CollapsingToolbarLayout>
+            </de.skicomp.views.collapsingToolbar.CollapsingToolbarLayout>
 
         </android.support.design.widget.AppBarLayout>
 

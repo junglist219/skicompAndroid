@@ -3,15 +3,19 @@ package de.skicomp.fragments.skiareas;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+
+import java.lang.reflect.Field;
 
 import de.skicomp.R;
 import de.skicomp.activities.BaseActivity;
@@ -57,6 +61,13 @@ public class SkiAreaFragment extends Fragment {
         return viewBinding.getRoot();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        TextView titleTextView = getTitleTextView();
+    }
+
     private void requestWeather() {
         LatLng northWest = new LatLng(skiArea.getBoundingBoxNorth(), skiArea.getBoundingBoxWest());
         LatLng southEast = new LatLng(skiArea.getBoundingBoxSouth(), skiArea.getBoundingBoxEast());
@@ -79,5 +90,21 @@ public class SkiAreaFragment extends Fragment {
                 Toast.makeText(getContext(), "failure", Toast.LENGTH_SHORT).show();
             }
         }, skiAreaCenter.latitude, skiAreaCenter.longitude);
+    }
+
+    public TextView getTitleTextView() {
+        View view = viewBinding.collapsingToolbar.findViewById(R.styleable.CollapsingToolbarLayout_toolbarId);
+
+        try {
+            Class<?> collapsingToolbarClass = CollapsingToolbarLayout.class;
+            Field titleTextViewField = collapsingToolbarClass.getDeclaredField("mTitleTextView");
+            titleTextViewField.setAccessible(true);
+            TextView tvTitle = (TextView) titleTextViewField.get(viewBinding.collapsingToolbar);
+
+            return tvTitle;
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

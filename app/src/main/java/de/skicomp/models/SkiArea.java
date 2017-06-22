@@ -189,12 +189,12 @@ public class SkiArea extends BaseObservable implements Serializable {
 
     @Bindable
     public String getDisplayMinHeight() {
-        return String.valueOf(minHeight).concat("m");
+        return concatWithM(minHeight);
     }
 
     @Bindable
     public String getDisplayMaxHeight() {
-        return String.valueOf(maxHeight).concat("m");
+        return concatWithM(maxHeight);
     }
 
     @Bindable
@@ -209,12 +209,12 @@ public class SkiArea extends BaseObservable implements Serializable {
 
     @Bindable
     public String getDisplaySlopesExpert() {
-        return String.valueOf(slopesExpert).concat("km");
+        return concatWithKM(slopesExpert);
     }
 
     @Bindable
     public String getDisplaySlopesFreeride() {
-        return String.valueOf(slopesFreeride).concat("km");
+        return concatWithKM(slopesFreeride);
     }
 
     @Bindable

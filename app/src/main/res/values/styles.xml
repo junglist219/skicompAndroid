@@ -35,6 +35,9 @@
 
     <style name="DefaultText.White.ToolbarExpanded" parent="DefaultText.White">
         <item name="android:textSize">@dimen/text_toolbar_expanded_title</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
     </style>
 
     <style name="DefaultEditText" parent="Widget.AppCompat.EditText">

@@ -92,4 +92,8 @@ dependencies {
 
     // APACHE COMMONS
     compile 'org.apache.commons:commons-lang3:3.5'
+
+    // MULTILINE COLLAPSING TOOLBAR
+    compile 'net.opacapp:multiline-collapsingtoolbar:1.4.0'
+
 }
