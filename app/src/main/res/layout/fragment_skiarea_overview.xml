@@ -16,18 +16,7 @@
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:navigationIcon="@drawable/ic_arrow_bottom"
-            app:title="">
-
-            <TextView
-                style="@style/DefaultText.White"
-                android:id="@+id/toolbar_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Schweiz"
-                android:textSize="@dimen/text_toolbar_title"
-                android:fontFamily="sans-serif-thin" />
-
-        </android.support.v7.widget.Toolbar>
+            app:titleTextAppearance="@style/DefaultText.White.Toolbar"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_skiareas_overview"

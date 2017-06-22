@@ -52,7 +52,6 @@ public class SkiAreaFragment extends Fragment {
         }
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(viewBinding.toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("");
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         return viewBinding.getRoot();

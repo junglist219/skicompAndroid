@@ -29,6 +29,14 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="DefaultText.White.Toolbar" parent="DefaultText.White">
+        <item name="android:textSize">@dimen/text_toolbar_title</item>
+    </style>
+
+    <style name="DefaultText.White.ToolbarExpanded" parent="DefaultText.White">
+        <item name="android:textSize">@dimen/text_toolbar_expanded_title</item>
+    </style>
+
     <style name="DefaultEditText" parent="Widget.AppCompat.EditText">
         <item name="android:fontFamily">sans-serif-thin</item>
         <item name="android:textColorHint">@color/text_color_title</item>
