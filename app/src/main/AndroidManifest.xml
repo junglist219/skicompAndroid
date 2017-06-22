@@ -25,7 +25,7 @@
             android:name="de.skicomp.activities.main.AccountActivity"
             android:windowSoftInputMode="adjustPan"/>
         <activity
-            android:name="de.skicomp.activities.main.StatisticsActivity"
+            android:name=".activities.main.FriendsActivity"
             android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="de.skicomp.activities.main.MapActivity"
@@ -34,9 +34,9 @@
             android:name="de.skicomp.activities.main.SkiAreasActivity"
             android:windowSoftInputMode="adjustPan"/>
         <activity
-            android:name="de.skicomp.activities.main.MoreActivity"
+            android:name="de.skicomp.activities.main.StatisticsActivity"
             android:windowSoftInputMode="adjustPan"/>
-        
+
     </application>
 
 </manifest>

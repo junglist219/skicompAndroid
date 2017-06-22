@@ -43,14 +43,14 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_menu_skiareas"
+            android:id="@+id/rl_menu_friends"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="@{handler::onClickMenuItem}">
 
             <ImageView
-                android:id="@+id/bt_menu_skiareas_selected"
+                android:id="@+id/bt_menu_friends_selected"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -60,13 +60,13 @@
                 android:visibility="invisible"/>
 
             <ImageView
-                android:id="@+id/bt_menu_skiareas"
+                android:id="@+id/bt_menu_friends"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:paddingTop="@dimen/padding_bottom_navigation"
                 android:paddingBottom="@dimen/padding_bottom_navigation"
-                android:src="@drawable/ic_menu_skiareas"/>
+                android:src="@drawable/ic_menu_friends"/>
 
         </RelativeLayout>
 
@@ -99,6 +99,34 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_menu_skiareas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="@{handler::onClickMenuItem}">
+
+            <ImageView
+                android:id="@+id/bt_menu_skiareas_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/padding_bottom_navigation_half"
+                android:paddingBottom="@dimen/padding_bottom_navigation_half"
+                android:src="@drawable/ic_menu_selected_background"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/bt_menu_skiareas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/padding_bottom_navigation"
+                android:paddingBottom="@dimen/padding_bottom_navigation"
+                android:src="@drawable/ic_menu_skiareas"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/rl_menu_statistics"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -123,34 +151,6 @@
                 android:paddingTop="@dimen/padding_bottom_navigation"
                 android:paddingBottom="@dimen/padding_bottom_navigation"
                 android:src="@drawable/ic_menu_statistics"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_menu_more"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="@{handler::onClickMenuItem}">
-
-            <ImageView
-                android:id="@+id/bt_menu_more_selected"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:paddingTop="@dimen/padding_bottom_navigation_half"
-                android:paddingBottom="@dimen/padding_bottom_navigation_half"
-                android:src="@drawable/ic_menu_selected_background"
-                android:visibility="invisible"/>
-
-            <ImageView
-                android:id="@+id/bt_menu_more"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:paddingTop="@dimen/padding_bottom_navigation"
-                android:paddingBottom="@dimen/padding_bottom_navigation"
-                android:src="@drawable/ic_menu_more"/>
 
         </RelativeLayout>
 

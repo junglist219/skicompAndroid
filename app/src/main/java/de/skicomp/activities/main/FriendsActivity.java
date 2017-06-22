@@ -7,32 +7,31 @@ import android.view.View;
 
 import de.skicomp.R;
 import de.skicomp.activities.BottomNavigationActivity;
-import de.skicomp.databinding.ActivityMoreBinding;
+import de.skicomp.databinding.ActivityFriendsBinding;
 
 /**
- * Created by benjamin.schneider on 14.06.17.
+ * Created by benjamin.schneider on 22.06.17.
  */
 
-public class MoreActivity extends BottomNavigationActivity {
+public class FriendsActivity extends BottomNavigationActivity {
 
-    private ActivityMoreBinding viewBinding;
+    private ActivityFriendsBinding viewBinding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_more);
+        viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_friends);
         viewBinding.setHandler(this);
     }
 
     @Override
     public int getNavigationMenuItemId() {
-        return R.id.rl_menu_more;
+        return R.id.rl_menu_friends;
     }
 
     @Override
     public void setSelectedMenuItem() {
-        viewBinding.navigation.btMenuMoreSelected.setVisibility(View.VISIBLE);
-        viewBinding.navigation.btMenuMore.setImageResource(R.drawable.ic_menu_more_selected);
+        viewBinding.navigation.btMenuFriendsSelected.setVisibility(View.VISIBLE);
+        viewBinding.navigation.btMenuFriends.setImageResource(R.drawable.ic_menu_friends_selected);
     }
-
 }

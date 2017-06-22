@@ -13,7 +13,7 @@
             <stroke
                 android:color="@android:color/transparent"
                 android:width="10dp"/>
-            <solid android:color="@color/colorPrimaryDark"/>
+            <solid android:color="#ff23729a"/>
             <size
                 android:width="100dp"
                 android:height="100dp"/>

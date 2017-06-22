@@ -5,8 +5,8 @@ import android.view.View;
 
 import de.skicomp.R;
 import de.skicomp.activities.main.AccountActivity;
+import de.skicomp.activities.main.FriendsActivity;
 import de.skicomp.activities.main.MapActivity;
-import de.skicomp.activities.main.MoreActivity;
 import de.skicomp.activities.main.SkiAreasActivity;
 import de.skicomp.activities.main.StatisticsActivity;
 
@@ -43,17 +43,17 @@ public abstract class BottomNavigationActivity extends BaseActivity {
             case R.id.rl_menu_profile:
                 intent = new Intent(this, AccountActivity.class);
                 break;
-            case R.id.rl_menu_skiareas:
-                intent = new Intent(this, SkiAreasActivity.class);
+            case R.id.rl_menu_friends:
+                intent = new Intent(this, FriendsActivity.class);
                 break;
             case R.id.rl_menu_map:
                 intent = new Intent(this, MapActivity.class);
                 break;
+            case R.id.rl_menu_skiareas:
+                intent = new Intent(this, SkiAreasActivity.class);
+                break;
             case R.id.rl_menu_statistics:
                 intent = new Intent(this, StatisticsActivity.class);
-                break;
-            case R.id.rl_menu_more:
-                intent = new Intent(this, MoreActivity.class);
                 break;
             default:
                 break;
