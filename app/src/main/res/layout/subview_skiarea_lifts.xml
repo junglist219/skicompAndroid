@@ -19,7 +19,7 @@
             android:layout_marginTop="@dimen/default_padding"
             android:padding="@dimen/default_padding"
             android:background="@drawable/background_light_gray_rounded_corners_top"
-            android:text="Lifte"/>
+            android:text="@string/skiarea_title_lifts"/>
 
         <LinearLayout
             android:layout_width="match_parent"

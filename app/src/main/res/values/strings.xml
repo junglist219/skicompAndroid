@@ -42,5 +42,6 @@
 
     <string name="skiarea_title_height">Höhe</string>
     <string name="skiarea_title_slopes">Pisten</string>
+    <string name="skiarea_title_lifts">Lifte</string>
 
 </resources>
