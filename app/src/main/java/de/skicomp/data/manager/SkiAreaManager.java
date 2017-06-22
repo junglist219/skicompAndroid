@@ -8,6 +8,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import de.skicomp.SessionManager;
@@ -16,6 +17,7 @@ import de.skicomp.events.skiarea.SkiAreaEventFailure;
 import de.skicomp.events.skiarea.SkiAreaEventSuccess;
 import de.skicomp.models.SkiArea;
 import de.skicomp.network.SkiService;
+import de.skicomp.utils.helper.SkiAreaHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -84,8 +86,24 @@ public class SkiAreaManager implements Callback<List<SkiArea>> {
     }
 
     public void addSkiAreaToFavorites(SkiArea skiArea) {
+        if (!SkiAreaHelper.favoritesContainsSkiArea(skiArea)) {
+            List<SkiArea> skiAreaFavorites = getFavoriteSkiAreas();
+            skiAreaFavorites.add(skiArea);
+            SessionManager.getInstance().setSkiAreaFavorites(UserManager.getInstance().getUser().getId(), skiAreaFavorites);
+        }
+    }
+
+    public void removeSkiAreaFromFavorites(SkiArea skiArea) {
         List<SkiArea> skiAreaFavorites = getFavoriteSkiAreas();
-        skiAreaFavorites.add(skiArea);
+        Iterator<SkiArea> iter = skiAreaFavorites.iterator();
+
+        while (iter.hasNext()) {
+            SkiArea favoriteSkiArea = iter.next();
+            if (favoriteSkiArea.getId() == skiArea.getId()) {
+                iter.remove();
+            }
+        }
+
         SessionManager.getInstance().setSkiAreaFavorites(UserManager.getInstance().getUser().getId(), skiAreaFavorites);
     }
     //----------------------------------------------------------------------------------------------

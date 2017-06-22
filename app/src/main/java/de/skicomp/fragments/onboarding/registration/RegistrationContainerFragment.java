@@ -35,8 +35,7 @@ public class RegistrationContainerFragment extends Fragment implements Registrat
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_registration_container, container, false);
         viewBinding.setHandler(this);
 
-        ((AppCompatActivity) getActivity()).setSupportActionBar(viewBinding.toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        initToolbar();
 
         getChildFragmentManager().beginTransaction()
                 .setCustomAnimations(0, R.anim.bottom_sheet_slide_in)
@@ -46,6 +45,11 @@ public class RegistrationContainerFragment extends Fragment implements Registrat
         user = new User();
 
         return viewBinding.getRoot();
+    }
+
+    private void initToolbar() {
+        ((AppCompatActivity) getActivity()).setSupportActionBar(viewBinding.toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @SuppressWarnings("unused")

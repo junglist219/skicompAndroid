@@ -18,6 +18,7 @@ import de.skicomp.adapter.SkiAreaCountryAdapter;
 import de.skicomp.data.manager.SkiAreaManager;
 import de.skicomp.databinding.ActivitySkiareasBinding;
 import de.skicomp.enums.SkiAreaCountry;
+import de.skicomp.events.UpdatedFavoriteSkiAreasEvent;
 import de.skicomp.events.skiarea.SkiAreaEvent;
 import de.skicomp.events.skiarea.SkiAreaEventFailure;
 import de.skicomp.events.skiarea.SkiAreaEventSuccess;
@@ -43,8 +44,7 @@ public class SkiAreasActivity extends BottomNavigationActivity implements SkiAre
         viewBinding.setHandler(this);
         viewBinding.rvSkiareasCountryOverview.setAdapter(new SkiAreaCountryAdapter(getApplicationContext(), this, new ArrayList<SkiAreaCountry>()));
 
-        String skiAreaFavoritesButtonTitle = String.format(getString(R.string.skiarea_favorites_button), SkiAreaManager.getInstance().getFavoriteSkiAreas().size());
-        viewBinding.btSkiareasFavorites.setText(skiAreaFavoritesButtonTitle);
+        invalidateFavorites();
 
         List<SkiArea> skiAreaList = SkiAreaManager.getInstance().getSkiAreas();
         if (skiAreaList == null || skiAreaList.isEmpty()) {
@@ -97,6 +97,11 @@ public class SkiAreasActivity extends BottomNavigationActivity implements SkiAre
                 .commit();
     }
 
+    private void invalidateFavorites() {
+        String skiAreaFavoritesButtonTitle = String.format(getString(R.string.skiarea_favorites_button), SkiAreaManager.getInstance().getFavoriteSkiAreas().size());
+        viewBinding.btSkiareasFavorites.setText(skiAreaFavoritesButtonTitle);
+    }
+
     private void showSkiAreaCountryOverview() {
         List<SkiAreaCountry> skiAreaCountryList = SkiAreaHelper.filterSkiAreaCountries(SkiAreaManager.getInstance().getSkiAreas());
 
@@ -111,6 +116,12 @@ public class SkiAreasActivity extends BottomNavigationActivity implements SkiAre
             SkiAreaCountryAdapter skiAreaCountryAdapter = new SkiAreaCountryAdapter(getApplicationContext(), this, skiAreaCountryList);
             viewBinding.rvSkiareasCountryOverview.setAdapter(skiAreaCountryAdapter);
         }
+    }
+
+    @Subscribe
+    @SuppressWarnings("unused")
+    public void onSkiAreaFavoritesEvent(UpdatedFavoriteSkiAreasEvent event) {
+        invalidateFavorites();
     }
 
     @Subscribe

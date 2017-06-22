@@ -103,6 +103,10 @@ public class SkiArea extends BaseObservable implements Serializable {
     @SerializedName("bounding_box_north")
     private double boundingBoxNorth;
 
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

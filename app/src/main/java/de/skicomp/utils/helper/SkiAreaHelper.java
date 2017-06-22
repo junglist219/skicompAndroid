@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.skicomp.data.manager.SkiAreaManager;
 import de.skicomp.enums.SkiAreaCountry;
 import de.skicomp.models.SkiArea;
 
@@ -59,4 +60,13 @@ public class SkiAreaHelper {
         return filteredSkiAreaList;
     }
 
+    public static boolean favoritesContainsSkiArea(SkiArea skiArea) {
+        List<SkiArea> favoriteSkiAreasList = SkiAreaManager.getInstance().getFavoriteSkiAreas();
+        for (SkiArea favoriteSkiArea : favoriteSkiAreasList) {
+            if (favoriteSkiArea.getId() == skiArea.getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

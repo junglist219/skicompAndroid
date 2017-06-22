@@ -14,12 +14,17 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 
+import org.greenrobot.eventbus.EventBus;
+
 import de.skicomp.R;
 import de.skicomp.activities.BaseActivity;
+import de.skicomp.data.manager.SkiAreaManager;
 import de.skicomp.databinding.FragmentSkiareaBinding;
+import de.skicomp.events.UpdatedFavoriteSkiAreasEvent;
 import de.skicomp.models.SkiArea;
 import de.skicomp.models.weather.WeatherForecast;
 import de.skicomp.network.WeatherService;
+import de.skicomp.utils.helper.SkiAreaHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,20 +50,27 @@ public class SkiAreaFragment extends Fragment implements AppBarLayout.OnOffsetCh
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_skiarea, container, false);
+        viewBinding.setHandler(this);
+        viewBinding.appBarLayout.addOnOffsetChangedListener(this);
+
+        initToolbar();
 
         Bundle bundle = getArguments();
         if (bundle != null) {
             skiArea = (SkiArea) bundle.getSerializable(KEY_SKIAREA);
+
             viewBinding.setSkiArea(skiArea);
             viewBinding.skiareaSlopes.scSlopes.setSkiArea(skiArea);
             viewBinding.skiareaSlopes.scSlopes.invalidate();
-            viewBinding.appBarLayout.addOnOffsetChangedListener(this);
+            viewBinding.ivFavorite.setImageResource(SkiAreaHelper.favoritesContainsSkiArea(skiArea) ? R.drawable.ic_favorite_selected : R.drawable.ic_favorite);
         }
 
+        return viewBinding.getRoot();
+    }
+
+    private void initToolbar() {
         ((AppCompatActivity) getActivity()).setSupportActionBar(viewBinding.toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        return viewBinding.getRoot();
     }
 
     @Override
@@ -73,6 +85,19 @@ public class SkiAreaFragment extends Fragment implements AppBarLayout.OnOffsetCh
             viewBinding.collapsingToolbarLayout.setTitle(" ");
             isShow = false;
         }
+    }
+
+    @SuppressWarnings("unused")
+    public void onClickFavorite(View view) {
+        if (SkiAreaHelper.favoritesContainsSkiArea(skiArea)) {
+            SkiAreaManager.getInstance().removeSkiAreaFromFavorites(skiArea);
+            viewBinding.ivFavorite.setImageResource(R.drawable.ic_favorite);
+        } else {
+            SkiAreaManager.getInstance().addSkiAreaToFavorites(skiArea);
+            viewBinding.ivFavorite.setImageResource(R.drawable.ic_favorite_selected);
+        }
+        viewBinding.ivFavorite.invalidate();
+        EventBus.getDefault().post(new UpdatedFavoriteSkiAreasEvent());
     }
 
     private void requestWeather() {
