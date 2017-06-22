@@ -8,6 +8,7 @@
     <string name="hint_login_username">USERNAME</string>
     <string name="hint_login_password">PASSWORT</string>
 
+    <string name="registration_title">Registrierung</string>
     <string name="hint_username">USERNAME *</string>
     <string name="hint_email">E-MAIL *</string>
     <string name="hint_password">PASSWORT *</string>
@@ -35,11 +36,6 @@
     <string name="logout"><u>Logout</u></string>
 
     <string name="skiarea_favorites_button">Favoriten (%d)</string>
-
-    <string name="skiarea_slopes_easy">%d km - einfach</string>
-    <string name="skiarea_slopes_moderate">%d km - mittel</string>
-    <string name="skiarea_slopes_expert">%d km - schwer</string>
-    <string name="skiarea_slopes_freeride">%d km - freeride</string>
 
     <string name="heroku_profile_picture_url">https://skiservicetest.herokuapp.com/images/%s.png</string>
     <string name="favorites_title">Favoriten</string>

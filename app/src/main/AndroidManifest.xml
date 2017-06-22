@@ -20,7 +20,7 @@
 
         <activity
             android:name="de.skicomp.activities.onboarding.OnboardingActivity"
-            android:windowSoftInputMode="adjustPan|stateVisible|stateAlwaysHidden"/>
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name="de.skicomp.activities.main.AccountActivity"
             android:windowSoftInputMode="adjustPan"/>

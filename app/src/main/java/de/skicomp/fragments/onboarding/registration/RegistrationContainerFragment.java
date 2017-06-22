@@ -36,7 +36,6 @@ public class RegistrationContainerFragment extends Fragment implements Registrat
         viewBinding.setHandler(this);
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(viewBinding.toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("");
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getChildFragmentManager().beginTransaction()

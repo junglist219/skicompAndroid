@@ -7,9 +7,6 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/onboarding_margin"
-        android:layout_marginLeft="@dimen/onboarding_margin"
-        android:layout_marginRight="@dimen/onboarding_margin"
         android:background="@color/white">
 
         <de.skicomp.views.SkiEditText
@@ -18,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nextFocusForward="@+id/et_lastname"
+            android:nextFocusDown="@+id/et_lastname"
             android:hint="@string/hint_firstname" />
 
         <de.skicomp.views.SkiEditText
@@ -27,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_padding"
             android:nextFocusForward="@+id/et_city"
+            android:nextFocusDown="@+id/et_city"
             android:hint="@string/hint_lastname" />
 
         <de.skicomp.views.SkiEditText
@@ -36,6 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_padding"
             android:nextFocusForward="@+id/et_country"
+            android:nextFocusDown="@+id/et_country"
             android:hint="@string/hint_city" />
 
         <de.skicomp.views.SkiEditText
