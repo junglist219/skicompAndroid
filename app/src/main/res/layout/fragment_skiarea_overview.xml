@@ -18,10 +18,13 @@
             app:navigationIcon="@drawable/ic_arrow_bottom"
             app:titleTextAppearance="@style/DefaultText.White.Toolbar"/>
 
-        <android.support.v7.widget.RecyclerView
+        <de.skicomp.views.fastscroll.FastScrollRecyclerView
             android:id="@+id/rv_skiareas_overview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            app:fastScrollPopupBgColor="@color/colorPrimaryDark"
+            app:fastScrollPopupTextColor="@color/white"
+            app:fastScrollThumbColor="@color/white"
             android:padding="@dimen/default_padding"/>
 
     </LinearLayout>

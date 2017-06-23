@@ -1,6 +1,7 @@
 package de.skicomp.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,16 +13,23 @@ import java.util.List;
 
 import de.skicomp.R;
 import de.skicomp.models.SkiArea;
+import de.skicomp.views.fastscroll.FastScrollRecyclerView;
 
 /**
  * Created by benjamin.schneider on 14.06.17.
  */
 
-public class SkiAreaAdapter extends RecyclerView.Adapter<SkiAreaAdapter.SkiAreaViewHolder> {
+public class SkiAreaAdapter extends RecyclerView.Adapter<SkiAreaAdapter.SkiAreaViewHolder> implements FastScrollRecyclerView.SectionedAdapter {
 
     private Context context;
     private SkiAreaAdapterListener listener;
     private List<SkiArea> skiAreaList;
+
+    @NonNull
+    @Override
+    public String getSectionName(int position) {
+        return String.valueOf(skiAreaList.get(position).getName().charAt(0));
+    }
 
     public interface SkiAreaAdapterListener {
         void onSkiAreaSelected(SkiArea skiArea);
