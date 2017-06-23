@@ -1,6 +1,8 @@
 package de.skicomp.utils;
 
 import android.content.Context;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
@@ -16,6 +18,18 @@ public class Utils {
 
     private Utils() {
         // utility class
+    }
+
+    public static void showSnackbar(View view, int textResID, int duration) {
+        showSnackbar(view, view.getContext().getString(textResID), duration);
+    }
+
+    public static void showSnackbar(View view, String text, int duration) {
+        Snackbar snackbar = Snackbar.make(view, text, duration);
+
+        View snackbarView = snackbar.getView();
+        snackbarView.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.transparent_black_75));
+        snackbar.show();
     }
 
     public static void showToast(Context context, int textResID, int duration) {

@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import de.skicomp.events.UpdatedFavoriteSkiAreasEvent;
 import de.skicomp.models.SkiArea;
 import de.skicomp.models.weather.WeatherForecast;
 import de.skicomp.network.WeatherService;
+import de.skicomp.utils.Utils;
 import de.skicomp.utils.helper.SkiAreaHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -89,12 +91,14 @@ public class SkiAreaFragment extends Fragment implements AppBarLayout.OnOffsetCh
 
     @SuppressWarnings("unused")
     public void onClickFavorite(View view) {
-        if (SkiAreaHelper.favoritesContainsSkiArea(skiArea)) {
-            SkiAreaManager.getInstance().removeSkiAreaFromFavorites(skiArea);
-            viewBinding.ivFavorite.setImageResource(R.drawable.ic_favorite);
-        } else {
+        if (!SkiAreaHelper.favoritesContainsSkiArea(skiArea)) {
             SkiAreaManager.getInstance().addSkiAreaToFavorites(skiArea);
             viewBinding.ivFavorite.setImageResource(R.drawable.ic_favorite_selected);
+            Utils.showSnackbar(viewBinding.getRoot(), R.string.favorites_added, Snackbar.LENGTH_SHORT);
+        } else {
+            SkiAreaManager.getInstance().removeSkiAreaFromFavorites(skiArea);
+            viewBinding.ivFavorite.setImageResource(R.drawable.ic_favorite);
+            Utils.showSnackbar(viewBinding.getRoot(), R.string.favorites_removed, Snackbar.LENGTH_SHORT);
         }
         viewBinding.ivFavorite.invalidate();
         EventBus.getDefault().post(new UpdatedFavoriteSkiAreasEvent());
