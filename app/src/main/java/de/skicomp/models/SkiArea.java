@@ -32,18 +32,6 @@ public class SkiArea extends BaseObservable implements Serializable {
     private String state;
 
     @DatabaseField
-    @SerializedName("description")
-    private String description;
-
-    @DatabaseField
-    @SerializedName("image_url_overview")
-    private String imageUrlOverview;
-
-    @DatabaseField
-    @SerializedName("image_url_logo")
-    private String imageUrlLogo;
-
-    @DatabaseField
     @SerializedName("min_height")
     private int minHeight;
 
@@ -117,18 +105,6 @@ public class SkiArea extends BaseObservable implements Serializable {
 
     public String getState() {
         return state;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getImageUrlOverview() {
-        return imageUrlOverview;
-    }
-
-    public String getImageUrlLogo() {
-        return imageUrlLogo;
     }
 
     public int getMinHeight() {
