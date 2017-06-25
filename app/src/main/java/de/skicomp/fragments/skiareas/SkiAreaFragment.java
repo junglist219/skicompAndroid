@@ -62,6 +62,7 @@ public class SkiAreaFragment extends Fragment implements AppBarLayout.OnOffsetCh
             skiArea = (SkiArea) bundle.getSerializable(KEY_SKIAREA);
 
             viewBinding.setSkiArea(skiArea);
+            viewBinding.tvSkiareaName.setSelected(true);
             viewBinding.skiareaSlopes.scSlopes.setSkiArea(skiArea);
             viewBinding.skiareaSlopes.scSlopes.invalidate();
             viewBinding.ivFavorite.setImageResource(SkiAreaHelper.favoritesContainsSkiArea(skiArea) ? R.drawable.ic_favorite_selected : R.drawable.ic_favorite);

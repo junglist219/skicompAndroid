@@ -59,9 +59,13 @@ public class SkiAreaAdapter extends RecyclerView.Adapter<SkiAreaAdapter.SkiAreaV
 
         if (position == 0) {
             holder.rlSkiAreaBackground.setBackgroundResource(R.drawable.background_light_gray_rounded_corners_top);
+            holder.vDivider.setVisibility(View.VISIBLE);
         } else if (position == skiAreaList.size() - 1) {
             holder.rlSkiAreaBackground.setBackgroundResource(R.drawable.background_light_gray_rounded_corners_bottom);
             holder.vDivider.setVisibility(View.GONE);
+        } else {
+            holder.rlSkiAreaBackground.setBackgroundResource(R.drawable.background_light_gray);
+            holder.vDivider.setVisibility(View.VISIBLE);
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
