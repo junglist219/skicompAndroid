@@ -8,12 +8,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import de.skicomp.R;
+import de.skicomp.SessionManager;
+import de.skicomp.activities.BaseActivity;
+import de.skicomp.activities.onboarding.OnboardingActivity;
+import de.skicomp.data.manager.UserManager;
 import de.skicomp.databinding.FragmentRegistrationContainerBinding;
+import de.skicomp.events.user.UserEvent;
+import de.skicomp.events.user.UserEventFailure;
+import de.skicomp.events.user.UserEventSuccess;
 import de.skicomp.models.User;
-import de.skicomp.utils.Utils;
+import de.skicomp.utils.ProgressDialogManager;
+import retrofit2.Response;
 
 /**
  * Created by benjamin.schneider on 15.06.17.
@@ -90,21 +99,8 @@ public class RegistrationContainerFragment extends Fragment implements Registrat
         user.setCity(city);
         user.setCountry(country);
 
-        Utils.showToast(getContext(), "Registrierung", Toast.LENGTH_SHORT);
-
-//        SkiService.getInstance().register(new Callback<User>() {
-//            @Override
-//            public void onResponse(Call<User> call, Response<User> response) {
-//                if (response.isSuccessful()) {
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<User> call, Throwable t) {
-//
-//            }
-//        }, user);
+        ProgressDialogManager.getInstance().startProgressDialog(getContext());
+        UserManager.getInstance().registerUser(user);
     }
 
     public boolean onBackPressed() {
@@ -122,5 +118,20 @@ public class RegistrationContainerFragment extends Fragment implements Registrat
         }
 
         return false;
+    }
+
+    @Subscribe
+    @SuppressWarnings("unused")
+    public void onUserEvent(UserEvent event) {
+        ProgressDialogManager.getInstance().stopProgressDialog();
+        if (event instanceof UserEventSuccess) {
+            SessionManager.getInstance().setUsername(user.getUsername());
+            SessionManager.getInstance().setPassword(user.getPassword());
+
+            ((OnboardingActivity) getActivity()).startMainActivity();
+        } else {
+            Response response = ((UserEventFailure) event).getResponse();
+            ((BaseActivity) getActivity()).handleError(response);
+        }
     }
 }

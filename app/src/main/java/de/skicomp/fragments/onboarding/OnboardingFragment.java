@@ -82,7 +82,6 @@ public class OnboardingFragment extends Fragment {
     @SuppressWarnings("unused")
     public void onClickRegister(View view) {
         getActivity().getSupportFragmentManager().beginTransaction()
-                //.setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left, R.anim.slide_from_left, R.anim.slide_to_right)
                 .setCustomAnimations(R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out, R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out)
                 .add(R.id.fl_container, new RegistrationContainerFragment())
                 .addToBackStack(RegistrationContainerFragment.TAG)

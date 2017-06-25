@@ -60,6 +60,10 @@ public class UserManager implements Callback<User> {
         SkiService.getInstance().updateUser(this, SessionManager.getInstance().getUsername(), user);
     }
 
+    public void registerUser(User user) {
+        SkiService.getInstance().register(this, user);
+    }
+
     public void setUser(User user) {
         this.user = user;
         saveUserInDatabase();

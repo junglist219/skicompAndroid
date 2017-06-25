@@ -52,7 +52,7 @@
                     android:layout_height="30dp"
                     android:layout_toRightOf="@id/tv_skiarea_min_height"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_account" />
+                    android:src="@drawable/ic_arrow_down" />
 
             </RelativeLayout>
 
@@ -67,7 +67,7 @@
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_account" />
+                    android:src="@drawable/ic_arrow_up" />
 
                 <TextView
                     style="@style/DefaultText.DarkGray"

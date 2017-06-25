@@ -117,8 +117,8 @@ public class Registration2Fragment extends Fragment {
             addressString = country;
         } else if (city.isEmpty() && !country.isEmpty()) {
             addressString = city;
-        }  else {
-            return false;
+        } else {
+            return true;
         }
 
         Geocoder geocoder = new Geocoder(getContext());
