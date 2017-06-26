@@ -3,30 +3,41 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_gradient">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:navigationIcon="@drawable/ic_arrow_bottom"
-            app:titleTextAppearance="@style/DefaultText.White.Toolbar"/>
-
-        <de.skicomp.views.fastscroll.FastScrollRecyclerView
-            android:id="@+id/rv_skiareas_overview"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:fastScrollPopupBgColor="@color/colorPrimaryDark"
-            app:fastScrollPopupTextColor="@color/white"
-            app:fastScrollThumbColor="@color/white"
-            android:padding="@dimen/default_padding"/>
+            android:background="@drawable/background_gradient">
 
-    </LinearLayout>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:navigationIcon="@drawable/ic_arrow_bottom"
+                app:titleTextAppearance="@style/DefaultText.White.Toolbar"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_skiareas_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
 
 </layout>

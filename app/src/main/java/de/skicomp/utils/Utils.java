@@ -3,6 +3,7 @@ package de.skicomp.utils;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
@@ -18,6 +19,11 @@ public class Utils {
 
     private Utils() {
         // utility class
+    }
+
+    public static int dpToPx(Context context, int dp) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
     public static void showSnackbar(View view, int textResID, int duration) {

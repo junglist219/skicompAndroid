@@ -10,12 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.util.List;
 
 import de.skicomp.R;
 import de.skicomp.adapter.SkiAreaAdapter;
 import de.skicomp.data.manager.SkiAreaManager;
 import de.skicomp.databinding.FragmentSkiareaOverviewBinding;
+import de.skicomp.events.UpdatedFavoriteSkiAreasEvent;
 import de.skicomp.models.SkiArea;
 import de.skicomp.utils.helper.SkiAreaHelper;
 
@@ -50,6 +54,18 @@ public class SkiAreaOverviewFragment extends Fragment implements SkiAreaAdapter.
         return viewBinding.getRoot();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
     private void initToolbar(String countryName) {
         ((AppCompatActivity) getActivity()).setSupportActionBar(viewBinding.toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(countryName);
@@ -57,8 +73,9 @@ public class SkiAreaOverviewFragment extends Fragment implements SkiAreaAdapter.
     }
 
     private void initRecyclerView() {
+        SkiAreaAdapter skiAreaAdapter = new SkiAreaAdapter(getContext(), this, skiAreaList);
         viewBinding.rvSkiareasOverview.setLayoutManager(new LinearLayoutManager(getContext()));
-        viewBinding.rvSkiareasOverview.setAdapter(new SkiAreaAdapter(getContext(), this, skiAreaList));
+        viewBinding.rvSkiareasOverview.setAdapter(skiAreaAdapter);
     }
 
     @Override
@@ -73,5 +90,11 @@ public class SkiAreaOverviewFragment extends Fragment implements SkiAreaAdapter.
                 .add(R.id.fl_container, skiAreaFragment)
                 .addToBackStack(SkiAreaFragment.TAG)
                 .commit();
+    }
+
+    @Subscribe
+    @SuppressWarnings("unused")
+    public void onSkiAreaFavoritesEvent(UpdatedFavoriteSkiAreasEvent event) {
+        viewBinding.rvSkiareasOverview.getAdapter().notifyDataSetChanged();
     }
 }

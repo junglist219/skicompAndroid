@@ -5,6 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <TextView
+        android:id="@+id/tv_header"
+        style="@style/DefaultText.DarkGray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:padding="@dimen/default_padding"
+        android:background="@drawable/background_light_gray_rounded_corners_top" />
+
     <RelativeLayout
         android:id="@+id/rl_skiarea"
         android:layout_width="match_parent"
@@ -17,6 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/default_padding"
+            android:layout_toLeftOf="@+id/iv_favorite"
+            android:layout_alignParentLeft="true"
             android:orientation="vertical">
 
             <TextView
@@ -24,7 +35,6 @@
                 android:id="@+id/tv_skiarea_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:text="Zermatt"/>
 
             <TextView
@@ -33,17 +43,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_color_default"
-                android:textSize="16sp"
                 android:text="Wallis"/>
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_favorite_accent" />
 
     </RelativeLayout>
 
     <View
         android:id="@+id/v_divider"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="@color/transparent"/>
 
 </LinearLayout>
