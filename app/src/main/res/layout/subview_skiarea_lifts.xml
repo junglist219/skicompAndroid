@@ -91,7 +91,7 @@
                     android:adjustViewBounds="true"
                     android:padding="@dimen/default_padding"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_account"/>
+                    android:src="@drawable/ic_gondola"/>
 
                 <TextView
                     style="@style/DefaultText.DarkGray"
