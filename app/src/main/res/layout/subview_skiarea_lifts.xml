@@ -37,8 +37,10 @@
                 android:padding="@dimen/default_padding">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:padding="@dimen/default_padding"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/ic_drag_lift"/>
 
@@ -48,7 +50,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:paddingTop="@dimen/default_padding"
                     android:text="@{String.valueOf(skiArea.dragLifts)}"/>
 
             </LinearLayout>
@@ -61,10 +62,11 @@
                 android:padding="@dimen/default_padding">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_account"/>
+                    android:src="@drawable/ic_chair_lift"/>
 
                 <TextView
                     style="@style/DefaultText.DarkGray"
@@ -72,7 +74,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:paddingTop="@dimen/default_padding"
                     android:text="@{String.valueOf(skiArea.chairLifts)}"/>
 
             </LinearLayout>
@@ -85,8 +86,10 @@
                 android:padding="@dimen/default_padding">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:padding="@dimen/default_padding"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/ic_account"/>
 
@@ -96,7 +99,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:paddingTop="@dimen/default_padding"
                     android:text="@{String.valueOf(skiArea.gondolaLifts)}"/>
 
             </LinearLayout>
@@ -109,8 +111,10 @@
                 android:padding="@dimen/default_padding">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:padding="@dimen/default_padding"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/ic_account"/>
 
@@ -120,7 +124,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:paddingTop="@dimen/default_padding"
                     android:text="@{String.valueOf(skiArea.aerialTramways)}"/>
 
             </LinearLayout>
@@ -133,8 +136,10 @@
                 android:padding="@dimen/default_padding">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:padding="@dimen/default_padding"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/ic_account"/>
 
@@ -144,7 +149,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:paddingTop="@dimen/default_padding"
                     android:text="@{String.valueOf(skiArea.railways)}"/>
 
             </LinearLayout>
