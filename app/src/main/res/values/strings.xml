@@ -43,6 +43,8 @@
     <string name="skiarea_title_height">Höhe</string>
     <string name="skiarea_title_slopes">Pisten</string>
     <string name="skiarea_title_lifts">Lifte</string>
+    <string name="skiarea_title_more_info">Weitere Informationen</string>
+
     <string name="favorites_added">Zu Favoriten hinzugefügt</string>
     <string name="favorites_removed">Von Favoriten entfernt</string>
 

@@ -121,6 +121,13 @@
                     android:layout_height="wrap_content"
                     bind:skiArea="@{skiArea}"/>
 
+                <include
+                    android:id="@+id/skiarea_more_info"
+                    layout="@layout/subview_skiarea_more_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    bind:skiArea="@{skiArea}"/>
+
             </LinearLayout>
 
         </android.support.v4.widget.NestedScrollView>
