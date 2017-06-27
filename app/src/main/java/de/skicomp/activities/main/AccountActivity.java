@@ -34,8 +34,8 @@ public class AccountActivity extends BottomNavigationActivity {
 
         Glide.with(this)
                 .load(String.format(getString(R.string.heroku_profile_picture_url), SessionManager.getInstance().getUsername()))
-                .placeholder(R.drawable.googleg_standard_color_18)
-                .error(R.drawable.googleg_standard_color_18)
+                .placeholder(R.drawable.ic_account_default_picture)
+                .error(R.drawable.ic_account_default_picture)
                 .into(viewBinding.civProfilePicture);
     }
 
