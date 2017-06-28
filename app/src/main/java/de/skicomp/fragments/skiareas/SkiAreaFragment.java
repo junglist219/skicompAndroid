@@ -95,11 +95,11 @@ public class SkiAreaFragment extends Fragment implements AppBarLayout.OnOffsetCh
         if (!SkiAreaHelper.favoritesContainsSkiArea(skiArea)) {
             SkiAreaManager.getInstance().addSkiAreaToFavorites(skiArea);
             viewBinding.ivFavorite.setImageResource(R.drawable.ic_favorite_selected);
-            Utils.showSnackbar(viewBinding.getRoot(), R.string.favorites_added, Snackbar.LENGTH_SHORT);
+            Utils.showSnackbar(viewBinding.getRoot(), R.string.skiarea_favorites_added, Snackbar.LENGTH_SHORT);
         } else {
             SkiAreaManager.getInstance().removeSkiAreaFromFavorites(skiArea);
             viewBinding.ivFavorite.setImageResource(R.drawable.ic_favorite);
-            Utils.showSnackbar(viewBinding.getRoot(), R.string.favorites_removed, Snackbar.LENGTH_SHORT);
+            Utils.showSnackbar(viewBinding.getRoot(), R.string.skiarea_favorites_removed, Snackbar.LENGTH_SHORT);
         }
         viewBinding.ivFavorite.invalidate();
         EventBus.getDefault().post(new UpdatedFavoriteSkiAreasEvent());

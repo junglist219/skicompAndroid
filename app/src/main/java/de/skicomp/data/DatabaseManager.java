@@ -12,6 +12,7 @@ import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
 
+import de.skicomp.models.Friend;
 import de.skicomp.models.SkiArea;
 import de.skicomp.models.User;
 
@@ -30,6 +31,7 @@ public class DatabaseManager extends OrmLiteSqliteOpenHelper {
 
     private Dao<User, Integer> userDao;
     private Dao<SkiArea, Integer> skiAreaDao;
+    private Dao<Friend, Integer> friendDao;
 
     private DatabaseManager(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -58,6 +60,7 @@ public class DatabaseManager extends OrmLiteSqliteOpenHelper {
             Log.d(TAG, "create tables");
             TableUtils.createTable(connectionSource, User.class);
             TableUtils.createTable(connectionSource, SkiArea.class);
+            TableUtils.createTable(connectionSource, Friend.class);
         } catch (SQLException e) {
             Log.e(TAG, "Can't create database", e);
         }
@@ -90,6 +93,17 @@ public class DatabaseManager extends OrmLiteSqliteOpenHelper {
             }
         }
         return skiAreaDao;
+    }
+
+    public Dao<Friend, Integer> getFriendDao() {
+        if (friendDao == null) {
+            try {
+                friendDao = getDao(Friend.class);
+            } catch (SQLException e) {
+                Log.e(TAG, "could not create friend DAO", e);
+            }
+        }
+        return friendDao;
     }
 
     //---------

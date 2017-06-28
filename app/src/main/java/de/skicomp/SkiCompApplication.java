@@ -3,6 +3,7 @@ package de.skicomp;
 import android.app.Application;
 
 import de.skicomp.data.DatabaseManager;
+import de.skicomp.data.manager.FriendManager;
 import de.skicomp.data.manager.SkiAreaManager;
 import de.skicomp.data.manager.UserManager;
 import de.skicomp.network.SkiService;
@@ -24,6 +25,7 @@ public class SkiCompApplication extends Application {
         DatabaseManager.createInstance(this);
         UserManager.createInstance(this);
         SkiAreaManager.createInstance(this);
+        FriendManager.createInstance(this);
 
         // Network
         SkiService.createInstance();

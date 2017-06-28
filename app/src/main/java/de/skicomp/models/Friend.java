@@ -1,29 +1,40 @@
 package de.skicomp.models;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import de.skicomp.enums.FriendshipStatus;
 
 /**
  * Created by benjamin.schneider on 09.05.17.
  */
-
+@DatabaseTable(tableName = "friend")
 public class Friend {
 
+    @DatabaseField(id = true)
     @SerializedName("username")
     private String username;
 
+    @DatabaseField
     @SerializedName("firstname")
     private String firstname;
 
+    @DatabaseField
     @SerializedName("lastname")
     private String lastname;
 
+    @DatabaseField
     @SerializedName("friendship_status")
     private FriendshipStatus friendshipStatus;
 
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     @SerializedName("position")
     private Position position;
+
+    public Friend() {
+        // default constructor
+    }
 
     public Friend(String username, String firstname, String lastname, FriendshipStatus friendshipStatus, Position position) {
         this.username = username;

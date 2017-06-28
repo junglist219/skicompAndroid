@@ -91,12 +91,12 @@ public class SkiAreaAdapter extends RecyclerView.Adapter<SkiAreaAdapter.SkiAreaV
                 if (!SkiAreaHelper.favoritesContainsSkiArea(skiArea)) {
                     SkiAreaManager.getInstance().addSkiAreaToFavorites(skiArea);
                     holder.ivFavorite.setImageResource(R.drawable.ic_favorite_selected);
-                    Utils.showSnackbar(recyclerView, R.string.favorites_added, Snackbar.LENGTH_SHORT);
+                    Utils.showSnackbar(recyclerView, R.string.skiarea_favorites_added, Snackbar.LENGTH_SHORT);
 
                 } else {
                     SkiAreaManager.getInstance().removeSkiAreaFromFavorites(skiArea);
                     holder.ivFavorite.setImageResource(R.drawable.ic_favorite);
-                    Utils.showSnackbar(recyclerView, R.string.favorites_removed, Snackbar.LENGTH_SHORT);
+                    Utils.showSnackbar(recyclerView, R.string.skiarea_favorites_removed, Snackbar.LENGTH_SHORT);
                 }
 
                 holder.ivFavorite.invalidate();

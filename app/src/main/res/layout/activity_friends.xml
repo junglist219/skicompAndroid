@@ -1,32 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable name="handler" type="de.skicomp.activities.BottomNavigationActivity"/>
+        <variable name="friendHandler" type="de.skicomp.activities.main.FriendsActivity"/>
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_gradient"
-        android:orientation="vertical">
+        android:background="@drawable/background_gradient">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/navigation"
+            android:background="@drawable/background_gradient">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                app:elevation="0dp">
+
+                <Button
+                    style="@style/DefaultButton.White"
+                    android:id="@+id/bt_friends_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_padding"
+                    android:text="@string/friends_search_button"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    android:onClick="@{friendHandler::onClickSearchFriends}"/>
+
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/rl_friends_requesting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/DefaultText.DarkGray"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/default_padding"
+                            android:layout_marginRight="@dimen/default_padding"
+                            android:padding="@dimen/default_padding"
+                            android:layout_marginBottom="1dp"
+                            android:background="@drawable/background_light_gray_rounded_corners_top"
+                            android:text="@string/friends_title_requesting"/>
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_friends_requesting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/default_padding"
+                            android:paddingRight="@dimen/default_padding"
+                            android:scrollbars="vertical"
+                            android:clipToPadding="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/rl_friends"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/DefaultText.DarkGray"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_marginLeft="@dimen/default_padding"
+                            android:layout_marginRight="@dimen/default_padding"
+                            android:layout_marginBottom="1dp"
+                            android:padding="@dimen/default_padding"
+                            android:background="@drawable/background_light_gray_rounded_corners_top"
+                            android:text="@string/friends_title"/>
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_friends"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/default_padding"
+                            android:paddingRight="@dimen/default_padding"
+                            android:scrollbars="vertical"
+                            android:clipToPadding="false"/>
+
+                        <TextView
+                            style="@style/DefaultText.DarkGray"
+                            android:id="@+id/tv_no_friends"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/default_padding"
+                            android:layout_marginRight="@dimen/default_padding"
+                            android:padding="@dimen/default_padding"
+                            android:background="@drawable/background_light_gray_rounded_corners_bottom"
+                            android:text="Du hast noch keine Freunde. Jetzt Freunde suchen!"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/rl_friends_requested"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/DefaultText.DarkGray"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_marginLeft="@dimen/default_padding"
+                            android:layout_marginRight="@dimen/default_padding"
+                            android:layout_marginBottom="1dp"
+                            android:padding="@dimen/default_padding"
+                            android:background="@drawable/background_light_gray_rounded_corners_top"
+                            android:text="@string/friends_title_requested"/>
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_friends_requested"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/default_padding"
+                            android:paddingRight="@dimen/default_padding"
+                            android:scrollbars="vertical"
+                            android:clipToPadding="false"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+
+        </android.support.design.widget.CoordinatorLayout>
 
         <FrameLayout
+            android:id="@+id/fl_container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-        </FrameLayout>
+            android:layout_height="match_parent"
+            android:layout_above="@+id/navigation"/>
 
         <include
             android:id="@+id/navigation"
             layout="@layout/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
             bind:handler="@{handler}"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </layout>
