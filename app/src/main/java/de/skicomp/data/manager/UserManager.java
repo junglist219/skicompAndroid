@@ -77,6 +77,7 @@ public class UserManager implements Callback<User> {
     }
 
     public void resetUser() {
+        user = null;
         DatabaseManager.getInstance().clearTable(User.class);
     }
 

@@ -11,11 +11,15 @@ import java.util.List;
 
 import de.skicomp.SessionManager;
 import de.skicomp.data.DatabaseManager;
+import de.skicomp.enums.FriendshipStatus;
 import de.skicomp.events.friend.FriendEventFailure;
 import de.skicomp.events.friend.FriendEventSuccess;
+import de.skicomp.events.friend.FriendUpdatedEventFailure;
+import de.skicomp.events.friend.FriendUpdatedEventSuccess;
 import de.skicomp.events.user.UserEventFailure;
 import de.skicomp.models.Friend;
 import de.skicomp.network.SkiService;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -71,7 +75,30 @@ public class FriendManager implements Callback<List<Friend>> {
     }
 
     public void resetFriends() {
+        friends = null;
         DatabaseManager.getInstance().clearTable(Friend.class);
+    }
+
+    //----------------------------------------------------------------------------------------------
+
+    public void updateFriendship(final Friend friend, final FriendshipStatus nextFriendshipStatus) {
+        SkiService.getInstance().updateFriendStatus(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    loadFriends();
+                    friend.setFriendshipStatus(nextFriendshipStatus);
+                    EventBus.getDefault().post(new FriendUpdatedEventSuccess(friend));
+                } else {
+                    EventBus.getDefault().post(new FriendUpdatedEventFailure(response));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                EventBus.getDefault().post(new FriendUpdatedEventFailure(null));
+            }
+        }, SessionManager.getInstance().getUsername(), friend.getUsername(), nextFriendshipStatus);
     }
 
     //----------------------------------------------------------------------------------------------
@@ -111,5 +138,4 @@ public class FriendManager implements Callback<List<Friend>> {
     public void onFailure(Call<List<Friend>> call, Throwable t) {
         EventBus.getDefault().post(new UserEventFailure(null));
     }
-
 }

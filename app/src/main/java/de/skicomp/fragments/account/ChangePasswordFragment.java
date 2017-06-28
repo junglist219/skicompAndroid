@@ -1,4 +1,4 @@
-package de.skicomp.fragments.myprofile;
+package de.skicomp.fragments.account;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;

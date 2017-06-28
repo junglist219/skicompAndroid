@@ -13,45 +13,46 @@
         android:layout_height="match_parent"
         android:background="@drawable/background_gradient">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:titleTextAppearance="@style/DefaultText.White.Toolbar"
+            app:title="@string/skiarea_title"/>
+
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/navigation"
-            android:background="@drawable/background_gradient">
+            android:layout_below="@id/toolbar"
+            android:layout_above="@+id/navigation">
 
-            <android.support.design.widget.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                app:elevation="0dp">
-
-                <Button
-                    style="@style/DefaultButton.White"
-                    android:id="@+id/bt_skiareas_favorites"
+                <android.support.design.widget.AppBarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_padding"
-                    android:text="@string/skiarea_favorites_button"
-                    app:layout_scrollFlags="scroll|enterAlways"
-                    android:onClick="@{skiareaHandler::onClickFavorites}"/>
+                    android:background="@color/transparent"
+                    app:elevation="0dp">
 
-            </android.support.design.widget.AppBarLayout>
+                    <Button
+                        style="@style/DefaultButton.White"
+                        android:id="@+id/bt_skiareas_favorites"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/default_padding"
+                        android:text="@string/skiarea_favorites_button"
+                        app:layout_scrollFlags="scroll|enterAlways"
+                        android:onClick="@{skiareaHandler::onClickFavorites}"/>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_skiareas_country_overview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical"
-                android:clipToPadding="false"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+                </android.support.design.widget.AppBarLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_skiareas_country_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical"
+                    android:clipToPadding="false"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
         </android.support.design.widget.CoordinatorLayout>
-
-        <FrameLayout
-            android:id="@+id/fl_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/navigation"/>
 
         <include
             android:id="@+id/navigation"
@@ -60,6 +61,11 @@
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             bind:handler="@{handler}"/>
+
+        <FrameLayout
+            android:id="@+id/fl_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 

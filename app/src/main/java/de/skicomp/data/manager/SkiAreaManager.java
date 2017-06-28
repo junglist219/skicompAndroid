@@ -73,6 +73,7 @@ public class SkiAreaManager implements Callback<List<SkiArea>> {
     }
 
     public void resetSkiAreas() {
+        skiAreaList = null;
         DatabaseManager.getInstance().clearTable(SkiArea.class);
     }
 

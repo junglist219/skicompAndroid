@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="handler" type="de.skicomp.fragments.friends.SearchFriendFragment"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_gradient">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:navigationIcon="@drawable/ic_arrow_bottom"
+                app:titleTextAppearance="@style/DefaultText.White.Toolbar"
+                app:title="@string/friends_title_search_friends"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_marginRight="@dimen/default_padding"
+                android:layout_marginBottom="@dimen/default_padding">
+
+                <de.skicomp.views.SkiEditText
+                    style="@style/DefaultEditText.White"
+                    android:id="@+id/et_search_friend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/iv_search_friend"
+                    android:hint="@string/hint_login_username" />
+
+                <ImageView
+                    android:id="@+id/iv_search_friend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/default_padding"
+                    android:src="@drawable/ic_search_friend"
+                    android:onClick="@{handler::onClickSearch}"/>
+            </RelativeLayout>
+
+            <TextView
+                style="@style/DefaultText.DarkGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_marginRight="@dimen/default_padding"
+                android:layout_marginBottom="1dp"
+                android:padding="@dimen/default_padding"
+                android:background="@drawable/background_light_gray_rounded_corners_top"
+                android:text="@string/friends_search_title_result"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_friends_search_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"/>
+
+            <TextView
+                style="@style/DefaultText.DarkGray"
+                android:id="@+id/tv_friend_search_no_results"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_marginRight="@dimen/default_padding"
+                android:padding="@dimen/default_padding"
+                android:background="@drawable/background_light_gray_rounded_corners_bottom" />
+
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import de.skicomp.data.manager.FriendManager;
 import de.skicomp.data.manager.UserManager;
 import de.skicomp.models.SkiArea;
 import de.skicomp.network.SkiService;
@@ -91,6 +92,7 @@ public class SessionManager {
         userPrefs.edit().clear().apply();
         SkiService.getInstance().reset();
         UserManager.getInstance().resetUser();
+        FriendManager.getInstance().resetFriends();
     }
 
 }

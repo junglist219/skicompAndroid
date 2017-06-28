@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -20,9 +19,9 @@ import de.skicomp.databinding.ActivityFriendsBinding;
 import de.skicomp.events.friend.FriendEvent;
 import de.skicomp.events.friend.FriendEventFailure;
 import de.skicomp.events.friend.FriendEventSuccess;
+import de.skicomp.fragments.friends.SearchFriendFragment;
 import de.skicomp.models.Friend;
 import de.skicomp.utils.ProgressDialogManager;
-import de.skicomp.utils.Utils;
 import de.skicomp.utils.helper.FriendHelper;
 import retrofit2.Response;
 
@@ -47,6 +46,7 @@ public class FriendsActivity extends BottomNavigationActivity implements FriendA
             FriendManager.getInstance().loadFriends();
         } else {
             showFriends();
+            FriendManager.getInstance().loadFriends();
         }
     }
 
@@ -87,7 +87,7 @@ public class FriendsActivity extends BottomNavigationActivity implements FriendA
     private void initFriends(List<Friend> friends) {
         if (friends == null || friends.isEmpty()) {
             viewBinding.rvFriends.setVisibility(View.GONE);
-            viewBinding.tvNoFriends.setVisibility(View.VISIBLE);
+            viewBinding.llNoFriends.setVisibility(View.VISIBLE);
             return;
         }
 
@@ -95,7 +95,7 @@ public class FriendsActivity extends BottomNavigationActivity implements FriendA
         viewBinding.rvFriends.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         viewBinding.rvFriends.setAdapter(friendAdapter);
         viewBinding.rvFriends.setVisibility(View.VISIBLE);
-        viewBinding.tvNoFriends.setVisibility(View.GONE);
+        viewBinding.llNoFriends.setVisibility(View.GONE);
     }
 
     private void initFriendsRequested(List<Friend> friendsRequested) {
@@ -123,7 +123,11 @@ public class FriendsActivity extends BottomNavigationActivity implements FriendA
 
     @SuppressWarnings("unused")
     public void onClickSearchFriends(View view) {
-        Utils.showToast(getApplicationContext(), "Freunde suchen", Toast.LENGTH_SHORT);
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out, R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out)
+                .add(R.id.fl_container, new SearchFriendFragment())
+                .addToBackStack(SearchFriendFragment.TAG)
+                .commit();
     }
 
     @Override

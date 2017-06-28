@@ -5,12 +5,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import de.skicomp.R;
+import de.skicomp.data.manager.FriendManager;
+import de.skicomp.enums.FriendshipStatus;
 import de.skicomp.models.Friend;
+import de.skicomp.utils.helper.FriendshipStatusHelper;
 
 /**
  * Created by benjamin.schneider on 28.06.17.
@@ -42,7 +46,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
 
     @Override
     public void onBindViewHolder(FriendViewHolder holder, int position) {
-        Friend friend = friendList.get(position);
+        final Friend friend = friendList.get(position);
 
         holder.tvUsername.setText(friend.getUsername());
         holder.tvName.setText(friend.getFirstname().concat(", ").concat(friend.getLastname()));
@@ -62,6 +66,20 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
             default:
                 holder.btAction.setVisibility(View.GONE);
         }
+
+        if (position == friendList.size() - 1) {
+            holder.rlFriend.setBackgroundResource(R.drawable.background_light_gray_rounded_corners_bottom);
+        } else {
+            holder.rlFriend.setBackgroundResource(R.drawable.background_light_gray);
+        }
+
+        holder.btAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FriendshipStatus nextFriendshipStatus = FriendshipStatusHelper.getNextFriendshipStatus(friend.getFriendshipStatus());
+                FriendManager.getInstance().updateFriendship(friend, nextFriendshipStatus);
+            }
+        });
     }
 
     @Override
@@ -71,6 +89,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
 
     class FriendViewHolder extends RecyclerView.ViewHolder {
 
+        RelativeLayout rlFriend;
         TextView tvUsername;
         TextView tvName;
         TextView btAction;
@@ -78,6 +97,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
 
         FriendViewHolder(View itemView) {
             super(itemView);
+            rlFriend = (RelativeLayout) itemView.findViewById(R.id.rl_friend);
             tvUsername = (TextView) itemView.findViewById(R.id.tv_friend_username);
             tvName = (TextView) itemView.findViewById(R.id.tv_friend_name);
             btAction = (TextView) itemView.findViewById(R.id.bt_action);

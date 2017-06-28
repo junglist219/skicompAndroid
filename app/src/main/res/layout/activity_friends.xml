@@ -13,11 +13,18 @@
         android:layout_height="match_parent"
         android:background="@drawable/background_gradient">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:titleTextAppearance="@style/DefaultText.White.Toolbar"
+            app:title="@string/friends_title"/>
+
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/navigation"
-            android:background="@drawable/background_gradient">
+            android:layout_below="@id/toolbar"
+            android:layout_above="@+id/navigation">
 
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
@@ -100,19 +107,33 @@
                             android:paddingLeft="@dimen/default_padding"
                             android:paddingRight="@dimen/default_padding"
                             android:scrollbars="vertical"
-                            android:clipToPadding="false"/>
+                            android:clipToPadding="false"
+                            android:visibility="gone"/>
 
-                        <TextView
-                            style="@style/DefaultText.DarkGray"
-                            android:id="@+id/tv_no_friends"
+                        <LinearLayout
+                            android:id="@+id/ll_no_friends"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:orientation="vertical"
                             android:layout_marginLeft="@dimen/default_padding"
                             android:layout_marginRight="@dimen/default_padding"
-                            android:padding="@dimen/default_padding"
-                            android:background="@drawable/background_light_gray_rounded_corners_bottom"
-                            android:text="Du hast noch keine Freunde. Jetzt Freunde suchen!"
-                            android:visibility="gone"/>
+                            android:background="@drawable/background_light_gray_rounded_corners_bottom">
+
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/ic_friends_empty"/>
+
+                            <TextView
+                                style="@style/DefaultText.DarkGray"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:padding="@dimen/default_padding"
+                                android:text="Du hast noch keine Freunde" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -151,12 +172,6 @@
 
         </android.support.design.widget.CoordinatorLayout>
 
-        <FrameLayout
-            android:id="@+id/fl_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/navigation"/>
-
         <include
             android:id="@+id/navigation"
             layout="@layout/bottom_navigation"
@@ -164,6 +179,11 @@
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             bind:handler="@{handler}"/>
+
+        <FrameLayout
+            android:id="@+id/fl_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     </RelativeLayout>
 
