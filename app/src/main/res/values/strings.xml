@@ -45,6 +45,11 @@
     <string name="friends_title_search_friends">Freunde suchen</string>
     <string name="friends_search_title_result">Suchergebnisse</string>
 
+    <string name="friends_search_no_input">Kein Eingabe</string>
+    <string name="friends_search_no_results">Zu deiner Eingabe konnten keine User gefunden werden.</string>
+
+    <string name="friends_title_user_details">User-Details</string>
+
     <string name="skiarea_title">Skigebiete</string>
     <string name="skiarea_favorites_title">Favoriten</string>
     <string name="skiarea_favorites_button">Favoriten (%d)</string>
@@ -54,7 +59,5 @@
     <string name="skiarea_title_slopes">Pisten</string>
     <string name="skiarea_title_lifts">Lifte</string>
     <string name="skiarea_title_more_info">Weitere Informationen</string>
-    <string name="friends_search_no_input">Kein Eingabe</string>
-    <string name="friends_search_no_results">Zu deiner Eingabe konnten keine User gefunden werden.</string>
 
 </resources>

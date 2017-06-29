@@ -19,6 +19,7 @@ import de.skicomp.databinding.ActivityFriendsBinding;
 import de.skicomp.events.friend.FriendEvent;
 import de.skicomp.events.friend.FriendEventFailure;
 import de.skicomp.events.friend.FriendEventSuccess;
+import de.skicomp.fragments.friends.FriendFragment;
 import de.skicomp.fragments.friends.SearchFriendFragment;
 import de.skicomp.models.Friend;
 import de.skicomp.utils.ProgressDialogManager;
@@ -132,7 +133,14 @@ public class FriendsActivity extends BottomNavigationActivity implements FriendA
 
     @Override
     public void onSelectedFriend(Friend friend) {
+        FriendFragment friendFragment = new FriendFragment();
+        friendFragment.setFriend(friend);
 
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out, R.anim.bottom_sheet_slide_in, R.anim.bottom_sheet_slide_out)
+                .add(R.id.fl_container, friendFragment)
+                .addToBackStack(FriendFragment.TAG)
+                .commit();
     }
 
     @Subscribe

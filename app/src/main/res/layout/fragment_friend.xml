@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="friend" type="de.skicomp.models.Friend"/>
+        <variable name="handler" type="de.skicomp.fragments.friends.FriendFragment"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/background_gradient">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:navigationIcon="@drawable/ic_arrow_bottom"
+            app:titleTextAppearance="@style/DefaultText.White.Toolbar"
+            app:title="@string/friends_title_user_details"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/civ_profile_picture"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_account_default_picture"/>
+
+                    <TextView
+                        style="@style/DefaultText.White"
+                        android:id="@+id/tv_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@{friend.username}"
+                        android:textSize="30sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_account_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@drawable/background_light_gray_rounded_corners"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/default_padding">
+
+                            <ImageView
+                                android:id="@+id/iv_name"
+                                android:layout_width="@dimen/icon_size"
+                                android:layout_height="@dimen/icon_size"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_account" />
+
+                            <TextView
+                                style="@style/DefaultText"
+                                android:id="@+id/tv_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/default_padding"
+                                android:layout_toRightOf="@id/iv_name"
+                                android:text="Name"
+                                android:textColor="@color/text_color_default" />
+
+                            <TextView
+                                style="@style/DefaultText.DarkGray"
+                                android:id="@+id/tv_firstname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@id/tv_name"
+                                android:layout_below="@id/tv_name"
+                                android:text="@{friend.firstname}" />
+
+                            <TextView
+                                style="@style/DefaultText.DarkGray"
+                                android:id="@+id/tv_lastname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/tv_firstname"
+                                android:layout_toRightOf="@id/tv_firstname"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:text="@{friend.lastname}" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/default_padding">
+
+                            <ImageView
+                                android:id="@+id/iv_home"
+                                android:layout_width="@dimen/icon_size"
+                                android:layout_height="@dimen/icon_size"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_home" />
+
+                            <TextView
+                                style="@style/DefaultText"
+                                android:id="@+id/tv_account_home"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/default_padding"
+                                android:layout_toRightOf="@id/iv_home"
+                                android:text="Wohnort" />
+
+                            <TextView
+                                style="@style/DefaultText.DarkGray"
+                                android:id="@+id/tv_home"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@id/tv_account_home"
+                                android:layout_below="@id/tv_account_home"/>
+                               <!-- android:text="@{friend.city + `, ` + friend.country}" />-->
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/default_padding">
+
+                            <ImageView
+                                android:id="@+id/iv_show_location"
+                                android:layout_width="@dimen/icon_size"
+                                android:layout_height="@dimen/icon_size"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_location" />
+
+                            <TextView
+                                style="@style/DefaultText.DarkGray"
+                                android:id="@+id/tv_profile_location"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/default_padding"
+                                android:layout_toRightOf="@id/iv_show_location"
+                                android:text="Position auf Karte anzeigen" />
+
+                            <Switch
+                                android:id="@+id/sw_friend_location_enabled"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_gravity="center" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/DefaultButton.White"
+                        android:id="@+id/bt_action"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/onboarding_margin"
+                        android:padding="@dimen/default_padding"
+                        android:gravity="center"
+                        android:text="@{friend.friendStatusDisplayText}"
+                        android:onClick="@{handler::onClickFriendAction}"/>
+
+                </LinearLayout>
+
+            </android.support.design.widget.CoordinatorLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

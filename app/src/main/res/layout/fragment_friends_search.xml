@@ -41,6 +41,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/iv_search_friend"
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/white"
                     android:hint="@string/hint_login_username" />
 
                 <ImageView

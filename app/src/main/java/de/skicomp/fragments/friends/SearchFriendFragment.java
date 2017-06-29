@@ -16,6 +16,7 @@ import java.util.List;
 import de.skicomp.R;
 import de.skicomp.SessionManager;
 import de.skicomp.activities.BaseActivity;
+import de.skicomp.activities.main.FriendsActivity;
 import de.skicomp.adapter.FriendAdapter;
 import de.skicomp.databinding.FragmentFriendsSearchBinding;
 import de.skicomp.models.Friend;
@@ -87,6 +88,6 @@ public class SearchFriendFragment extends Fragment implements FriendAdapter.Frie
 
     @Override
     public void onSelectedFriend(Friend friend) {
-
+        ((FriendsActivity) getActivity()).onSelectedFriend(friend);
     }
 }

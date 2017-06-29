@@ -11,10 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import de.skicomp.R;
-import de.skicomp.data.manager.FriendManager;
-import de.skicomp.enums.FriendshipStatus;
 import de.skicomp.models.Friend;
-import de.skicomp.utils.helper.FriendshipStatusHelper;
 
 /**
  * Created by benjamin.schneider on 28.06.17.
@@ -51,33 +48,16 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
         holder.tvUsername.setText(friend.getUsername());
         holder.tvName.setText(friend.getFirstname().concat(", ").concat(friend.getLastname()));
 
-        switch (friend.getFriendshipStatus()) {
-            case DEFAULT:
-                holder.btAction.setText("hinzufügen");
-                //holder.btAction.setText(FriendshipStatusHelper.getFriendshipStatusText(FriendshipStatus.DEFAULT));
-                break;
-            case REQUESTED:
-                holder.btAction.setText("löschen");
-                //holder.btAction.setText(FriendshipStatusHelper.getFriendshipStatusText(FriendshipStatus.REQUESTED));
-                break;
-            case REQUESTING:
-                holder.btAction.setText("akzeptieren");
-                break;
-            default:
-                holder.btAction.setVisibility(View.GONE);
-        }
-
         if (position == friendList.size() - 1) {
             holder.rlFriend.setBackgroundResource(R.drawable.background_light_gray_rounded_corners_bottom);
         } else {
             holder.rlFriend.setBackgroundResource(R.drawable.background_light_gray);
         }
 
-        holder.btAction.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FriendshipStatus nextFriendshipStatus = FriendshipStatusHelper.getNextFriendshipStatus(friend.getFriendshipStatus());
-                FriendManager.getInstance().updateFriendship(friend, nextFriendshipStatus);
+                listener.onSelectedFriend(friend);
             }
         });
     }
