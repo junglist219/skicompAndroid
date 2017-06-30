@@ -26,6 +26,7 @@
             android:layout_marginTop="@dimen/default_padding"
             android:nextFocusForward="@+id/et_password"
             android:nextFocusDown="@+id/et_password"
+            android:inputType="textEmailAddress"
             android:hint="@string/hint_email" />
 
         <de.skicomp.views.SkiEditText
