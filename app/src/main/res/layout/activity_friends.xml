@@ -13,12 +13,12 @@
         android:layout_height="match_parent"
         android:background="@drawable/background_gradient">
 
-        <android.support.v7.widget.Toolbar
+        <include
             android:id="@+id/toolbar"
+            layout="@layout/view_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:titleTextAppearance="@style/DefaultText.White.Toolbar"
-            app:title="@string/friends_title"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_padding"/>
 
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -29,18 +29,23 @@
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_marginRight="@dimen/default_padding"
                 android:background="@color/transparent"
                 app:elevation="0dp">
 
-                <Button
-                    style="@style/DefaultButton.White"
+                <TextView
+                    style="@style/DefaultButton"
                     android:id="@+id/bt_friends_search"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_padding"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    android:gravity="center_horizontal"
+                    android:padding="@dimen/default_padding"
+                    android:background="@drawable/background_light_gray_rounded_corners"
                     android:text="@string/friends_search_button"
-                    app:layout_scrollFlags="scroll|enterAlways"
-                    android:onClick="@{friendHandler::onClickSearchFriends}"/>
+                    android:onClick="@{friendHandler::onClickSearchFriends}"
+                    app:layout_scrollFlags="scroll|enterAlways"/>
 
             </android.support.design.widget.AppBarLayout>
 

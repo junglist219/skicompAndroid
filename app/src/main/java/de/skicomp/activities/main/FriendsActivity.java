@@ -40,6 +40,7 @@ public class FriendsActivity extends BottomNavigationActivity implements FriendA
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_friends);
         viewBinding.setHandler(this);
         viewBinding.setFriendHandler(this);
+        viewBinding.toolbar.tvToolbarTitle.setText(R.string.toolbar_friends_title);
 
         List<Friend> friendList = FriendManager.getInstance().getFriends();
         if (friendList == null) {

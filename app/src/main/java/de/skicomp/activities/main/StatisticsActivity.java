@@ -22,6 +22,7 @@ public class StatisticsActivity extends BottomNavigationActivity {
         super.onCreate(savedInstanceState);
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_statistics);
         viewBinding.setHandler(this);
+        viewBinding.toolbar.tvToolbarTitle.setText(R.string.toolbar_statistis_title);
     }
 
     @Override

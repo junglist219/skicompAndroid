@@ -30,6 +30,7 @@
                     android:id="@+id/rv_skiareas_overview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:scrollbars="vertical"
                     android:paddingLeft="@dimen/default_padding"
                     android:paddingTop="@dimen/default_padding"
                     android:paddingRight="@dimen/default_padding"/>

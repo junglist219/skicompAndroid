@@ -27,10 +27,10 @@ public class AccountActivity extends BottomNavigationActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_account);
-
         viewBinding.setUser(UserManager.getInstance().getUser());
         viewBinding.setHandler(this);
         viewBinding.setProfileHandler(this);
+        viewBinding.toolbar.tvToolbarTitle.setText(R.string.toolbar_account_title);
 
         Glide.with(this)
                 .load(String.format(getString(R.string.heroku_profile_picture_url), SessionManager.getInstance().getUsername()))

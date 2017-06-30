@@ -12,7 +12,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background_gradient"
         android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/view_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_padding"/>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -21,12 +29,11 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/background_gradient">
+                android:layout_height="match_parent">
 
                 <android.support.design.widget.CoordinatorLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -34,7 +41,7 @@
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="@dimen/default_padding">
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/civ_profile_picture"

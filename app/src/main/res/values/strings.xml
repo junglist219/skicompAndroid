@@ -32,32 +32,35 @@
     <string name="forgot_password_dialog_text">Du hast dein Passwort vergessen?\nKein Problem!\nGib deinen Nutzername ein und wir senden dir eine E-Mail mit deinem neuen Passwort zu.</string>
     <string name="forgot_password_dialog_button">PASSWORT ZUSCHICKEN</string>
 
+    <string name="toolbar_account_title">MEIN ACCOUNT</string>
     <string name="account_edit"><u>aktualisieren</u></string>
     <string name="logout"><u>Logout</u></string>
 
     <string name="heroku_profile_picture_url">https://skiservicetest.herokuapp.com/images/%s.png</string>
 
-    <string name="friends_search_button">Freunde suchen</string>
+    <string name="toolbar_friends_title">MEINE FREUNDE</string>
+    <string name="friends_search_button">FREUNDE SUCHEN</string>
     <string name="friends_title_requesting">Anfragen</string>
     <string name="friends_title">Freunde</string>
     <string name="friends_title_requested">Anfrage gesendet</string>
 
     <string name="friends_title_search_friends">Freunde suchen</string>
     <string name="friends_search_title_result">Suchergebnisse</string>
-
     <string name="friends_search_no_input">Kein Eingabe</string>
     <string name="friends_search_no_results">Zu deiner Eingabe konnten keine User gefunden werden.</string>
 
     <string name="friends_title_user_details">User-Details</string>
 
-    <string name="skiarea_title">Skigebiete</string>
+    <string name="toolbar_skiarea_title">SKIGEBIETE</string>
     <string name="skiarea_favorites_title">Favoriten</string>
-    <string name="skiarea_favorites_button">Favoriten (%d)</string>
+    <string name="skiarea_favorites_button">FAVORITEN (%d)</string>
     <string name="skiarea_favorites_added">Zu Favoriten hinzugefügt</string>
     <string name="skiarea_favorites_removed">Von Favoriten entfernt</string>
     <string name="skiarea_title_height">Höhe</string>
     <string name="skiarea_title_slopes">Pisten</string>
     <string name="skiarea_title_lifts">Lifte</string>
     <string name="skiarea_title_more_info">Weitere Informationen</string>
+
+    <string name="toolbar_statistis_title">MEINE STATISTIKEN</string>
 
 </resources>

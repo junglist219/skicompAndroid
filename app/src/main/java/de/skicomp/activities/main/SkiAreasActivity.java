@@ -43,6 +43,7 @@ public class SkiAreasActivity extends BottomNavigationActivity implements SkiAre
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_skiareas);
         viewBinding.setHandler(this);
         viewBinding.setSkiareaHandler(this);
+        viewBinding.toolbar.tvToolbarTitle.setText(R.string.toolbar_skiarea_title);
         viewBinding.rvSkiareasCountryOverview.setAdapter(new SkiAreaCountryAdapter(getApplicationContext(), this, new ArrayList<SkiAreaCountry>()));
 
         invalidateFavorites();
