@@ -44,7 +44,6 @@
                     android:layout_centerVertical="true"
                     android:padding="@dimen/default_padding"
                     android:gravity="center_vertical"
-                    android:background="@drawable/background_light_gray_rounded_corners_left"
                     android:text="@{skiArea.displayMinHeight}"/>
 
                 <ImageView
@@ -78,7 +77,6 @@
                     android:layout_toRightOf="@id/iv_skiarea_max_height"
                     android:padding="@dimen/default_padding"
                     android:gravity="center_vertical"
-                    android:background="@drawable/background_light_gray_rounded_corners_left"
                     android:text="@{skiArea.displayMaxHeight}"/>
 
             </RelativeLayout>
